@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://gq0550icxpb1"]
+
+[ext_resource type="PackedScene" uid="uid://pq22h01eo50o" path="res://character.tscn" id="1_egkd4"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_osijd"]
+
+[node name="Transition" type="Node2D"]
+
+[node name="Character" parent="." instance=ExtResource("1_egkd4")]
+position = Vector2(125, 184)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(321, 67)
+zoom = Vector2(1.8, 1.8)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(700, 50)
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = 217.0
+offset_right = 684.0
+offset_bottom = 317.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(125, 217)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(-125, -217)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_osijd")

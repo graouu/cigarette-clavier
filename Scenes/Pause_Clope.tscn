@@ -1,12 +1,44 @@
-[gd_scene load_steps=5 format=3 uid="uid://dbu7tyi076bp6"]
+[gd_scene load_steps=7 format=3 uid="uid://dbu7tyi076bp6"]
 
 [ext_resource type="Script" uid="uid://c7amkvrcfg3h0" path="res://Scenes/pause_clope.gd" id="1_0j2yk"]
+[ext_resource type="AudioStream" uid="uid://dyb8qfp1c5kmf" path="res://Assets/lighting.mp3" id="2_0vttn"]
+[ext_resource type="AudioStream" uid="uid://dbnaygdncenq4" path="res://Assets/exhale.mp3" id="3_81fow"]
 
 [sub_resource type="Animation" id="Animation_58k75"]
 resource_name = "Allumer_Cigarette"
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Lighting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("2_0vttn")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
 
 [sub_resource type="Animation" id="Animation_0j2yk"]
 resource_name = "Tirer_Cigarette"
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Exhale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_81fow")
+}],
+"times": PackedFloat32Array(0.0333333)
+}
+tracks/0/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0vttn"]
 _data = {
@@ -26,5 +58,9 @@ libraries = {
 wait_time = 30.0
 one_shot = true
 autostart = true
+
+[node name="Lighting" type="AudioStreamPlayer2D" parent="."]
+
+[node name="Exhale" type="AudioStreamPlayer2D" parent="."]
 
 [connection signal="timeout" from="Durée_pause" to="." method="_on_timer_timeout"]

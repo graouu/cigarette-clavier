@@ -7,6 +7,9 @@ extends Control
 @export var sound : AudioStreamPlayer
 @export var transition : Transitor
 
+
+@onready var game_resource : GameResource = load("res://Assets/GameScenes.tres")
+
 @onready var code_size = code_lines.length()
 @onready var keyboard_click : AudioStream = preload("res://Assets/typing.mp3")
 @onready var mouse_click : AudioStream = preload("res://Assets/computer-mouse-click-352734.mp3")
@@ -40,4 +43,14 @@ func _on_keep_pressed() -> void:
 	sound.play()
 	transition.end()
 	await transition.end_done
-	get_tree().change_scene_to_file("res://Scenes/programming.tscn")
+	get_tree().change_scene_to_packed(game_resource.game_array[game_resource.game_step])
+
+
+func _on_leave_pressed() -> void:
+	sound.stream = mouse_click
+	sound.play()
+	transition.end()
+	await transition.end_done
+	game_resource.game_step += 1
+	get_tree().change_scene_to_packed(game_resource.game_array[game_resource.game_step])
+	

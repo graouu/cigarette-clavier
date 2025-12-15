@@ -4,6 +4,9 @@ signal end_done
 
 @onready var anim = $AnimationPlayer
 
+func _ready() -> void:
+	show()
+
 func beginning():
 	anim.play("appear")
 	

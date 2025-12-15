@@ -1,10 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://dft2odq0it3yp"]
+[gd_scene load_steps=9 format=3 uid="uid://bht5qp2inlvyx"]
 
-[ext_resource type="Script" uid="uid://dkld1w71gheow" path="res://Scripts/typing_scene.gd" id="1_tjfp3"]
-[ext_resource type="Texture2D" uid="uid://bsrwab324lso2" path="res://Images/pc_screen_placeholder.jpg" id="2_6mj8a"]
-[ext_resource type="FontFile" uid="uid://bng8fwje8ok16" path="res://Assets/GoogleSansCode-Regular.ttf" id="3_72k6r"]
-[ext_resource type="AudioStream" uid="uid://7j7xsjbxy2yd" path="res://Assets/typing.mp3" id="4_6mj8a"]
-[ext_resource type="PackedScene" uid="uid://dr252hvw8htoy" path="res://Scenes/transition.tscn" id="5_72k6r"]
+[ext_resource type="Script" uid="uid://dkld1w71gheow" path="res://Scripts/typing_scene.gd" id="1_v8n82"]
+[ext_resource type="Texture2D" uid="uid://cu07hhxow305k" path="res://Images/phase3.png" id="2_v8n82"]
+[ext_resource type="Theme" uid="uid://cnrmgawvhwgx8" path="res://Assets/screen_font.tres" id="3_wa4xm"]
+[ext_resource type="PackedScene" uid="uid://dr252hvw8htoy" path="res://Scenes/transition.tscn" id="4_m7p4q"]
+[ext_resource type="AudioStream" uid="uid://7j7xsjbxy2yd" path="res://Assets/typing.mp3" id="5_jkm85"]
 
 [sub_resource type="Animation" id="Animation_dn4f4"]
 length = 0.001
@@ -69,20 +69,21 @@ _data = {
 &"compiling": SubResource("Animation_xandg")
 }
 
-[node name="Control" type="Control" node_paths=PackedStringArray("computer_text", "compilation_button", "button_container", "sound", "transition")]
+[node name="Control2" type="Control" node_paths=PackedStringArray("computer_text", "compilation_button", "button_container", "sound", "transition")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_tjfp3")
+script = ExtResource("1_v8n82")
 computer_text = NodePath("TextureRect/RichTextLabel")
 code_lines = "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. "
 compilation_button = NodePath("TextureRect/RichTextLabel/Run")
 button_container = NodePath("TextureRect/RichTextLabel/ButtonContainer")
 sound = NodePath("AudioStreamPlayer")
 transition = NodePath("Transition")
+scene_id = 2
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -91,7 +92,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_6mj8a")
+texture = ExtResource("2_v8n82")
 expand_mode = 1
 
 [node name="RichTextLabel" type="RichTextLabel" parent="TextureRect"]
@@ -101,14 +102,15 @@ anchor_left = 0.29000002
 anchor_top = 0.31300002
 anchor_right = 0.72900003
 anchor_bottom = 0.67300004
-offset_left = -0.08001709
-offset_top = 0.17597961
-offset_right = 0.19195557
-offset_bottom = -0.104034424
+offset_left = -77.08002
+offset_top = -128.82402
+offset_right = 11.191956
+offset_bottom = -132.10403
 grow_horizontal = 2
 grow_vertical = 2
+rotation = -0.008726646
 mouse_filter = 2
-theme_override_fonts/normal_font = ExtResource("3_72k6r")
+theme = ExtResource("3_wa4xm")
 bbcode_enabled = true
 text = "Running"
 scroll_following = true
@@ -127,13 +129,14 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -362.0
-offset_top = -250.0
-offset_right = -319.0
-offset_bottom = -219.0
+offset_left = -337.0
+offset_top = -348.0
+offset_right = -294.0
+offset_bottom = -317.0
 grow_horizontal = 0
 grow_vertical = 0
-text = "RUN"
+theme = ExtResource("3_wa4xm")
+text = "run"
 
 [node name="ButtonContainer" type="Control" parent="TextureRect/RichTextLabel"]
 visible = false
@@ -149,27 +152,29 @@ grow_vertical = 0
 [node name="leave" type="Button" parent="TextureRect/RichTextLabel/ButtonContainer"]
 top_level = true
 layout_mode = 0
-offset_left = 593.0
-offset_top = 397.0
-offset_right = 646.0
-offset_bottom = 428.0
-text = "Leave"
+offset_left = 630.00006
+offset_top = 314.0
+offset_right = 690.00006
+offset_bottom = 345.0
+theme = ExtResource("3_wa4xm")
+text = "leave"
 
 [node name="keep" type="Button" parent="TextureRect/RichTextLabel/ButtonContainer"]
 top_level = true
 layout_mode = 0
-offset_left = 482.0
-offset_top = 396.0
-offset_right = 579.0
-offset_bottom = 427.0
-text = "Keep trying"
+offset_left = 400.0
+offset_top = 316.0
+offset_right = 532.0
+offset_bottom = 347.0
+theme = ExtResource("3_wa4xm")
+text = "keep trying"
 
-[node name="Transition" parent="." instance=ExtResource("5_72k6r")]
+[node name="Transition" parent="." instance=ExtResource("4_m7p4q")]
 visible = false
 layout_mode = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_6mj8a")
+stream = ExtResource("5_jkm85")
 
 [connection signal="pressed" from="TextureRect/RichTextLabel/Run" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="TextureRect/RichTextLabel/ButtonContainer/leave" to="." method="_on_leave_pressed"]

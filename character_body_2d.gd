@@ -12,6 +12,7 @@ var SoundOutPlaying = false
 @onready var SoundDoorOpen : AudioStream = preload("res://Assets/doorOpen.mp3")
 @onready var SoundDoorClose : AudioStream = preload("res://Assets/doorClose.mp3")
 @export var sound : AudioStreamPlayer
+@export var scene_id : int
 
 func _ready() -> void:
 	# maybe add to the black screen transition
@@ -57,8 +58,7 @@ func _physics_process(delta: float) -> void:
 				soundOut()
 				transition.end()
 				await transition.end_done
-				game_resource.game_step += 1
-				get_tree().change_scene_to_packed(game_resource.game_array[game_resource.game_step])
+				get_tree().change_scene_to_packed(game_resource.game_array[scene_id+1])
 	
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)

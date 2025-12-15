@@ -46,8 +46,9 @@ _data = {
 &"Tirer_Cigarette": SubResource("Animation_0j2yk")
 }
 
-[node name="PauseClope" type="Node2D"]
+[node name="PauseClope" type="Node2D" node_paths=PackedStringArray("Animateur")]
 script = ExtResource("1_0j2yk")
+Animateur = NodePath("Allumer_Clope")
 
 [node name="Allumer_Clope" type="AnimationPlayer" parent="."]
 libraries = {

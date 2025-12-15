@@ -1,37 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://s2jgojd0nsuv"]
+[gd_scene load_steps=10 format=3 uid="uid://s2jgojd0nsuv"]
 
 [ext_resource type="Script" uid="uid://cmqkgsbsot513" path="res://Scripts/mainmenu.gd" id="1_pposm"]
 [ext_resource type="Theme" uid="uid://cnrmgawvhwgx8" path="res://Assets/screen_font.tres" id="2_rtnl3"]
 [ext_resource type="Texture2D" uid="uid://dcjs1xhmdjp46" path="res://Images/flou.png" id="2_v4pkt"]
 [ext_resource type="PackedScene" uid="uid://dr252hvw8htoy" path="res://Scenes/transition.tscn" id="2_web8u"]
-
-[sub_resource type="Animation" id="Animation_rtnl3"]
-resource_name = "load"
-length = 1.6
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:text")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.16666667, 0.33333334, 0.5, 0.62, 0.81, 0.96, 1.07, 1.22, 1.39),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": ["", "Ci", "Ciga", "Cigare", "Cigarett", "Cigarette ", "Cigarette Cl", "Cigarette Clzv", "Cigarette Clavie", "Cigarette Clavier."]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../Button:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
+[ext_resource type="AudioStream" uid="uid://b3tes5rtmm2o5" path="res://Assets/computer-mouse-click-352734.mp3" id="5_5326e"]
+[ext_resource type="AudioStream" uid="uid://7j7xsjbxy2yd" path="res://Assets/typing.mp3" id="5_lah54"]
 
 [sub_resource type="Animation" id="Animation_v4pkt"]
 length = 0.001
@@ -50,7 +24,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../Button:visible")
+tracks/1/path = NodePath("../start:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -58,6 +32,130 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../quit:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../../AudioStreamPlayer:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../../AudioStreamPlayer:pitch_scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../../AudioStreamPlayer:stream")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_lah54")]
+}
+
+[sub_resource type="Animation" id="Animation_rtnl3"]
+resource_name = "load"
+length = 1.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.07666664, 0.24333331, 0.40999997, 0.56666666, 0.7, 0.8333333, 0.98, 1.13, 1.2666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": ["", "Ci", "Ciga", "Cigare", "Cigarett", "Cigarette ", "Cigarette Cl", "Cigarette Clav", "Cigarette Clavie", "Cigarette Clavier."]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../start:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.4666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../quit:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../../AudioStreamPlayer:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.033333335, 0.24351738, 0.40477458, 0.53333336, 0.6666667, 0.8, 0.96666664, 1.1, 1.2333333, 1.4618315, 1.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, true, true, true, true, true, true, true, true, true, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../../AudioStreamPlayer:pitch_scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.057721056, 0.24351738, 0.40477458, 0.56252617, 0.692233, 0.8184343, 0.9656691, 1.1093984, 1.2531276),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 0.9, 1.1, 1.05, 0.8, 0.9, 1.0, 1.05, 1.1]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../../AudioStreamPlayer:stream")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1.4478091),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("5_lah54"), ExtResource("5_5326e")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_v4pkt"]
@@ -74,7 +172,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_pposm")
-start_button = NodePath("ColorRect/VBoxContainer/Button")
+start_button = NodePath("ColorRect/start")
 transition = NodePath("Transition")
 
 [node name="ColorRect" type="TextureRect" parent="."]
@@ -88,41 +186,72 @@ grow_vertical = 2
 texture = ExtResource("2_v4pkt")
 expand_mode = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
-self_modulate = Color(0.9867516, 0.9867516, 0.9867516, 1)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 40
-alignment = 1
-
-[node name="Label" type="RichTextLabel" parent="ColorRect/VBoxContainer"]
+[node name="Label" type="RichTextLabel" parent="ColorRect"]
 clip_contents = false
 custom_minimum_size = Vector2(0, 29.9)
-layout_mode = 2
+layout_mode = 0
+offset_left = 1.0
+offset_top = 229.0
+offset_right = 1153.0
+offset_bottom = 258.9
 theme = ExtResource("2_rtnl3")
 theme_override_font_sizes/normal_font_size = 46
+scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect/VBoxContainer/Label"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect/Label"]
 libraries = {
 &"": SubResource("AnimationLibrary_v4pkt")
 }
 autoplay = "load"
 
-[node name="Button" type="Button" parent="ColorRect/VBoxContainer"]
-layout_mode = 2
+[node name="start" type="Button" parent="ColorRect"]
+layout_mode = 0
+offset_left = 516.0
+offset_top = 334.0
+offset_right = 636.0
+offset_bottom = 360.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = ExtResource("2_rtnl3")
 text = "Start Game"
 
+[node name="quit" type="Button" parent="ColorRect"]
+layout_mode = 0
+offset_left = 516.0
+offset_top = 375.0
+offset_right = 636.0
+offset_bottom = 401.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("2_rtnl3")
+text = "Quit"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 14.0
+offset_top = -119.0
+offset_right = 289.0
+offset_bottom = -3.0
+grow_vertical = 0
+theme = ExtResource("2_rtnl3")
+text = "Balthazar
+Camille
+Elyas
+Matéo
+Nini"
+scroll_active = false
+
 [node name="Transition" parent="." instance=ExtResource("2_web8u")]
 visible = false
 layout_mode = 1
 
-[connection signal="pressed" from="ColorRect/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_lah54")
+
+[connection signal="pressed" from="ColorRect/start" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="ColorRect/quit" to="." method="_on_button_quit_pressed"]

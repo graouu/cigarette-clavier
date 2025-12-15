@@ -1,0 +1,181 @@
+[gd_scene load_steps=9 format=3 uid="uid://dft2odq0it3yp"]
+
+[ext_resource type="Script" uid="uid://dkld1w71gheow" path="res://Scripts/typing_scene.gd" id="1_406ts"]
+[ext_resource type="Texture2D" uid="uid://1s3kun1jrpu6" path="res://Images/phase2.png" id="2_406ts"]
+[ext_resource type="Theme" uid="uid://cnrmgawvhwgx8" path="res://Assets/screen_font.tres" id="3_ra1jg"]
+[ext_resource type="PackedScene" uid="uid://dr252hvw8htoy" path="res://Scenes/transition.tscn" id="4_id6jy"]
+[ext_resource type="AudioStream" uid="uid://7j7xsjbxy2yd" path="res://Assets/typing.mp3" id="5_qtqph"]
+
+[sub_resource type="Animation" id="Animation_dn4f4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Running"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ButtonContainer:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_xandg"]
+resource_name = "compiling"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2.5, 3.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": ["Running", "Running.", "Running..", "Running...", "Running...[br]
+Compilation failed.", "Running...[br]
+Compilation failed. Idiot."]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ButtonContainer:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s71e2"]
+_data = {
+&"RESET": SubResource("Animation_dn4f4"),
+&"compiling": SubResource("Animation_xandg")
+}
+
+[node name="Control" type="Control" node_paths=PackedStringArray("computer_text", "compilation_button", "button_container", "sound", "transition")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_406ts")
+computer_text = NodePath("TextureRect/RichTextLabel")
+code_lines = "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. "
+compilation_button = NodePath("TextureRect/RichTextLabel/Run")
+button_container = NodePath("TextureRect/RichTextLabel/ButtonContainer")
+sound = NodePath("AudioStreamPlayer")
+transition = NodePath("Transition")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_406ts")
+expand_mode = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.29000002
+anchor_top = 0.31300002
+anchor_right = 0.72900003
+anchor_bottom = 0.67300004
+offset_left = -30.079987
+offset_top = -72.82402
+offset_right = -3.8567505
+offset_bottom = -30.35733
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.017453292
+mouse_filter = 2
+theme = ExtResource("3_ra1jg")
+bbcode_enabled = true
+text = "Running"
+scroll_following = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TextureRect/RichTextLabel"]
+libraries = {
+&"": SubResource("AnimationLibrary_s71e2")
+}
+
+[node name="Run" type="Button" parent="TextureRect/RichTextLabel"]
+visible = false
+top_level = true
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -362.0
+offset_top = -261.0
+offset_right = -319.0
+offset_bottom = -230.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("3_ra1jg")
+text = "run"
+
+[node name="ButtonContainer" type="Control" parent="TextureRect/RichTextLabel"]
+visible = false
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -33.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="leave" type="Button" parent="TextureRect/RichTextLabel/ButtonContainer"]
+top_level = true
+layout_mode = 0
+offset_left = 652.0
+offset_top = 389.0
+offset_right = 712.0
+offset_bottom = 420.0
+theme = ExtResource("3_ra1jg")
+text = "leave"
+
+[node name="keep" type="Button" parent="TextureRect/RichTextLabel/ButtonContainer"]
+top_level = true
+layout_mode = 0
+offset_left = 408.0
+offset_top = 385.0
+offset_right = 540.0
+offset_bottom = 416.0
+rotation = 0.017453292
+theme = ExtResource("3_ra1jg")
+text = "keep trying"
+
+[node name="Transition" parent="." instance=ExtResource("4_id6jy")]
+visible = false
+layout_mode = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_qtqph")
+
+[connection signal="pressed" from="TextureRect/RichTextLabel/Run" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="TextureRect/RichTextLabel/ButtonContainer/leave" to="." method="_on_leave_pressed"]
+[connection signal="pressed" from="TextureRect/RichTextLabel/ButtonContainer/keep" to="." method="_on_keep_pressed"]

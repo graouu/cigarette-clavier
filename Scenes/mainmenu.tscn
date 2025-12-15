@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://s2jgojd0nsuv"]
+[gd_scene load_steps=4 format=3 uid="uid://s2jgojd0nsuv"]
 
 [ext_resource type="Script" uid="uid://cmqkgsbsot513" path="res://Scripts/mainmenu.gd" id="1_pposm"]
-[ext_resource type="Resource" uid="uid://21hyeax6sqqk" path="res://Assets/GameScenes.tres" id="2_rtnl3"]
 [ext_resource type="PackedScene" uid="uid://dr252hvw8htoy" path="res://Scenes/transition.tscn" id="2_web8u"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_loy4s"]
@@ -18,7 +17,6 @@ grow_vertical = 2
 script = ExtResource("1_pposm")
 start_button = NodePath("ColorRect/VBoxContainer/Button")
 transition = NodePath("Transition")
-game_resource = ExtResource("2_rtnl3")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1

@@ -1,0 +1,26 @@
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://cnrmgawvhwgx8"]
+
+[ext_resource type="FontFile" uid="uid://bng8fwje8ok16" path="res://Assets/GoogleSansCode-Regular.ttf" id="1_mhgqw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mhgqw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ebmiq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dev5x"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uxe01"]
+
+[resource]
+Button/colors/font_color = Color(0.31764707, 0.16862746, 0.34509805, 1)
+Button/colors/font_outline_color = Color(1, 0.68235296, 0.6313726, 1)
+Button/constants/outline_size = 13
+Button/font_sizes/font_size = 20
+Button/fonts/font = ExtResource("1_mhgqw")
+Button/styles/focus = SubResource("StyleBoxEmpty_mhgqw")
+Button/styles/hover = SubResource("StyleBoxEmpty_ebmiq")
+Button/styles/normal = SubResource("StyleBoxEmpty_dev5x")
+Button/styles/pressed = SubResource("StyleBoxEmpty_uxe01")
+RichTextLabel/colors/default_color = Color(0.31764707, 0.16862746, 0.34509805, 1)
+RichTextLabel/colors/font_outline_color = Color(1, 0.68235296, 0.6313726, 1)
+RichTextLabel/constants/outline_size = 6
+RichTextLabel/fonts/normal_font = ExtResource("1_mhgqw")

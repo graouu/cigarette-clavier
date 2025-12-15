@@ -39,6 +39,7 @@ func _on_button_pressed() -> void:
 	computer_text.get_child(0).play("compiling")
 
 func _on_keep_pressed() -> void:
+	button_container.hide()
 	sound.stream = mouse_click
 	sound.play()
 	transition.end()
@@ -47,6 +48,7 @@ func _on_keep_pressed() -> void:
 
 
 func _on_leave_pressed() -> void:
+	button_container.hide()
 	sound.stream = mouse_click
 	sound.play()
 	transition.end()

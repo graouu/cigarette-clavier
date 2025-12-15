@@ -1,11 +1,70 @@
-[gd_scene load_steps=4 format=3 uid="uid://s2jgojd0nsuv"]
+[gd_scene load_steps=8 format=3 uid="uid://s2jgojd0nsuv"]
 
 [ext_resource type="Script" uid="uid://cmqkgsbsot513" path="res://Scripts/mainmenu.gd" id="1_pposm"]
+[ext_resource type="Theme" uid="uid://cnrmgawvhwgx8" path="res://Assets/screen_font.tres" id="2_rtnl3"]
+[ext_resource type="Texture2D" uid="uid://dcjs1xhmdjp46" path="res://Images/flou.png" id="2_v4pkt"]
 [ext_resource type="PackedScene" uid="uid://dr252hvw8htoy" path="res://Scenes/transition.tscn" id="2_web8u"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_loy4s"]
-font_size = 50
-font_color = Color(0.04755766, 0.047557645, 0.047557645, 1)
+[sub_resource type="Animation" id="Animation_rtnl3"]
+resource_name = "load"
+length = 1.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.33333334, 0.5, 0.62, 0.81, 0.96, 1.07, 1.22, 1.39),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": ["", "Ci", "Ciga", "Cigare", "Cigarett", "Cigarette ", "Cigarette Cl", "Cigarette Clzv", "Cigarette Clavie", "Cigarette Clavier."]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Button:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_v4pkt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [""]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Button:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v4pkt"]
+_data = {
+&"RESET": SubResource("Animation_v4pkt"),
+&"load": SubResource("Animation_rtnl3")
+}
 
 [node name="Control" type="Control" node_paths=PackedStringArray("start_button", "transition")]
 layout_mode = 3
@@ -18,16 +77,19 @@ script = ExtResource("1_pposm")
 start_button = NodePath("ColorRect/VBoxContainer/Button")
 transition = NodePath("Transition")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="TextureRect" parent="."]
+self_modulate = Color(0.851769, 0.8517689, 0.85176885, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.9166399, 0.91663986, 0.9166398, 1)
+texture = ExtResource("2_v4pkt")
+expand_mode = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
+self_modulate = Color(0.9867516, 0.9867516, 0.9867516, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -37,17 +99,26 @@ grow_vertical = 2
 theme_override_constants/separation = 40
 alignment = 1
 
-[node name="Label" type="Label" parent="ColorRect/VBoxContainer"]
+[node name="Label" type="RichTextLabel" parent="ColorRect/VBoxContainer"]
+clip_contents = false
+custom_minimum_size = Vector2(0, 29.9)
 layout_mode = 2
-text = "Cigarette Clavier"
-label_settings = SubResource("LabelSettings_loy4s")
+theme = ExtResource("2_rtnl3")
+theme_override_font_sizes/normal_font_size = 46
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect/VBoxContainer/Label"]
+libraries = {
+&"": SubResource("AnimationLibrary_v4pkt")
+}
+autoplay = "load"
 
 [node name="Button" type="Button" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme = ExtResource("2_rtnl3")
 text = "Start Game"
 
 [node name="Transition" parent="." instance=ExtResource("2_web8u")]

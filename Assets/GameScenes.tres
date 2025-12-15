@@ -1,11 +1,12 @@
-[gd_resource type="Resource" script_class="GameResource" load_steps=5 format=3 uid="uid://21hyeax6sqqk"]
+[gd_resource type="Resource" script_class="GameResource" load_steps=6 format=3 uid="uid://c1u0gepoi0svh"]
 
 [ext_resource type="Script" uid="uid://b6umj06uxoott" path="res://Scripts/GameResource.gd" id="1_4y4bu"]
 [ext_resource type="PackedScene" uid="uid://1v5bdmpqq4wg" path="res://Scenes/programming1.tscn" id="1_8ektb"]
-[ext_resource type="PackedScene" uid="uid://gq0550icxpb1" path="res://Scenes/GoOut.tscn" id="2_fp2fp"]
 [ext_resource type="PackedScene" uid="uid://dft2odq0it3yp" path="res://Scenes/programming2.tscn" id="3_838gq"]
+[ext_resource type="PackedScene" uid="uid://bht5qp2inlvyx" path="res://Scenes/programming3.tscn" id="3_brrgs"]
+[ext_resource type="PackedScene" uid="uid://g5f4k1giivdi" path="res://Scenes/programming4.tscn" id="4_43gmw"]
 
 [resource]
 script = ExtResource("1_4y4bu")
-game_array = Array[PackedScene]([ExtResource("1_8ektb"), ExtResource("2_fp2fp"), ExtResource("3_838gq")])
+game_array = Array[PackedScene]([ExtResource("1_8ektb"), ExtResource("3_838gq"), ExtResource("3_brrgs"), ExtResource("4_43gmw")])
 metadata/_custom_type_script = "uid://b6umj06uxoott"

@@ -6,6 +6,7 @@ extends Control
 @export var button_container : Control
 @export var sound : AudioStreamPlayer
 @export var transition : Transitor
+@export var scene_id : int
 
 
 @onready var game_resource : GameResource = load("res://Assets/GameScenes.tres")
@@ -44,7 +45,7 @@ func _on_keep_pressed() -> void:
 	sound.play()
 	transition.end()
 	await transition.end_done
-	get_tree().change_scene_to_packed(game_resource.game_array[game_resource.game_step])
+	get_tree().change_scene_to_packed(game_resource.game_array[scene_id])
 
 
 func _on_leave_pressed() -> void:
@@ -53,6 +54,5 @@ func _on_leave_pressed() -> void:
 	sound.play()
 	transition.end()
 	await transition.end_done
-	game_resource.game_step += 1
-	get_tree().change_scene_to_packed(game_resource.game_array[game_resource.game_step])
+	get_tree().change_scene_to_packed(game_resource.game_array[scene_id+1])
 	

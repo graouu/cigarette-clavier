@@ -80,7 +80,7 @@ shader = ExtResource("3_hutyt")
 shader_parameter/wave_amplitude = 30.0
 shader_parameter/wave_frequency = 140.0
 
-[node name="Control" type="Control" node_paths=PackedStringArray("computer_text", "compilation_button", "button_container", "sound", "transition")]
+[node name="Control2" type="Control" node_paths=PackedStringArray("computer_text", "compilation_button", "button_container", "sound", "transition")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -94,6 +94,7 @@ compilation_button = NodePath("TextureRect/RichTextLabel/Run")
 button_container = NodePath("TextureRect/RichTextLabel/ButtonContainer")
 sound = NodePath("AudioStreamPlayer")
 transition = NodePath("Transition")
+scene_id = 3
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1

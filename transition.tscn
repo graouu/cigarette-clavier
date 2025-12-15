@@ -1,0 +1,58 @@
+[gd_scene load_steps=11 format=3 uid="uid://dlmyelq5fmlaj"]
+
+[ext_resource type="Texture2D" uid="uid://bmuc7fnbd6v00" path="res://ZombiMove9.png" id="1_7fmn4"]
+[ext_resource type="Texture2D" uid="uid://cr3v3misew3e8" path="res://ZombiMove10.png" id="2_8mcfx"]
+[ext_resource type="Texture2D" uid="uid://dslgjpuv725ws" path="res://ZombiMove11.png" id="3_tyg23"]
+[ext_resource type="Texture2D" uid="uid://c37tkhp7tntqa" path="res://ZombiMove12.png" id="4_qudrn"]
+[ext_resource type="Texture2D" uid="uid://dltf7wkyxf44g" path="res://ZombiMove13.png" id="5_3ii0x"]
+[ext_resource type="Texture2D" uid="uid://by0w6i7knwk3w" path="res://ZombiMove14.png" id="6_aut5u"]
+[ext_resource type="Texture2D" uid="uid://caugsauxhiyn4" path="res://ZombiMove15.png" id="7_g8e1g"]
+[ext_resource type="Texture2D" uid="uid://c161o4lvbys4t" path="res://ZombiMove16.png" id="8_vwy5d"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r5xsm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_7fmn4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_8mcfx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_tyg23")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_qudrn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_3ii0x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_aut5u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_g8e1g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_vwy5d")
+}],
+"loop": true,
+"name": &"Walking",
+"speed": 6.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7fmn4"]
+radius = 41.19466
+
+[node name="Character" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+position = Vector2(4, -49)
+sprite_frames = SubResource("SpriteFrames_r5xsm")
+animation = &"Walking"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(-1, -44)
+shape = SubResource("CircleShape2D_7fmn4")

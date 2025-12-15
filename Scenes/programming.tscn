@@ -69,7 +69,7 @@ _data = {
 &"compiling": SubResource("Animation_xandg")
 }
 
-[node name="Control" type="Control" node_paths=PackedStringArray("computer_text", "compilation_button", "button_container", "sound", "transition")]
+[node name="Control" type="Control" node_paths=PackedStringArray("computer_text", "compilation_button", "sound", "transition")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -80,7 +80,6 @@ script = ExtResource("1_tjfp3")
 computer_text = NodePath("TextureRect/RichTextLabel")
 code_lines = "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. "
 compilation_button = NodePath("TextureRect/RichTextLabel/Run")
-button_container = NodePath("")
 sound = NodePath("AudioStreamPlayer")
 transition = NodePath("Transition")
 

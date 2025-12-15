@@ -1,43 +1,43 @@
-[gd_scene load_steps=15 format=3 uid="uid://gq0550icxpb1"]
+[gd_scene load_steps=15 format=3 uid="uid://00exfm1c1v86"]
 
-[ext_resource type="Texture2D" uid="uid://bn8iuirk5vcxw" path="res://Images/eviromentado.png" id="1_3sl4o"]
-[ext_resource type="PackedScene" uid="uid://dr252hvw8htoy" path="res://Scenes/transition.tscn" id="1_fafgb"]
-[ext_resource type="Script" uid="uid://n64q54b6bbbv" path="res://character_body_2d.gd" id="2_3sl4o"]
-[ext_resource type="Texture2D" uid="uid://bmuc7fnbd6v00" path="res://Images/ZombiAnimation/ZombiMove9.png" id="3_ljujk"]
-[ext_resource type="Texture2D" uid="uid://cr3v3misew3e8" path="res://Images/ZombiAnimation/ZombiMove10.png" id="4_jhaq5"]
-[ext_resource type="Texture2D" uid="uid://dslgjpuv725ws" path="res://Images/ZombiAnimation/ZombiMove11.png" id="5_let5l"]
-[ext_resource type="Texture2D" uid="uid://c37tkhp7tntqa" path="res://Images/ZombiAnimation/ZombiMove12.png" id="6_fshcd"]
-[ext_resource type="Texture2D" uid="uid://dltf7wkyxf44g" path="res://Images/ZombiAnimation/ZombiMove13.png" id="7_8q3mp"]
-[ext_resource type="Texture2D" uid="uid://by0w6i7knwk3w" path="res://Images/ZombiAnimation/ZombiMove14.png" id="8_lyo8p"]
-[ext_resource type="Texture2D" uid="uid://caugsauxhiyn4" path="res://Images/ZombiAnimation/ZombiMove15.png" id="9_g7ce0"]
-[ext_resource type="Texture2D" uid="uid://c161o4lvbys4t" path="res://Images/ZombiAnimation/ZombiMove16.png" id="10_xtfs2"]
+[ext_resource type="Texture2D" uid="uid://bokipapxlol2r" path="res://Images/eviromentadult.png" id="1_p5leo"]
+[ext_resource type="PackedScene" uid="uid://dr252hvw8htoy" path="res://Scenes/transition.tscn" id="2_qe7k8"]
+[ext_resource type="Script" uid="uid://n64q54b6bbbv" path="res://character_body_2d.gd" id="3_44ioy"]
+[ext_resource type="Texture2D" uid="uid://bmuc7fnbd6v00" path="res://Images/ZombiAnimation/ZombiMove9.png" id="4_ogdgd"]
+[ext_resource type="Texture2D" uid="uid://cr3v3misew3e8" path="res://Images/ZombiAnimation/ZombiMove10.png" id="5_fy7d0"]
+[ext_resource type="Texture2D" uid="uid://dslgjpuv725ws" path="res://Images/ZombiAnimation/ZombiMove11.png" id="6_v7abe"]
+[ext_resource type="Texture2D" uid="uid://c37tkhp7tntqa" path="res://Images/ZombiAnimation/ZombiMove12.png" id="7_01jus"]
+[ext_resource type="Texture2D" uid="uid://dltf7wkyxf44g" path="res://Images/ZombiAnimation/ZombiMove13.png" id="8_k0fy7"]
+[ext_resource type="Texture2D" uid="uid://by0w6i7knwk3w" path="res://Images/ZombiAnimation/ZombiMove14.png" id="9_qumod"]
+[ext_resource type="Texture2D" uid="uid://caugsauxhiyn4" path="res://Images/ZombiAnimation/ZombiMove15.png" id="10_ljs3a"]
+[ext_resource type="Texture2D" uid="uid://c161o4lvbys4t" path="res://Images/ZombiAnimation/ZombiMove16.png" id="11_6gap5"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_r5xsm"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_ljujk")
+"texture": ExtResource("4_ogdgd")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_jhaq5")
+"texture": ExtResource("5_fy7d0")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_let5l")
+"texture": ExtResource("6_v7abe")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_fshcd")
+"texture": ExtResource("7_01jus")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_8q3mp")
+"texture": ExtResource("8_k0fy7")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_lyo8p")
+"texture": ExtResource("9_qumod")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_g7ce0")
+"texture": ExtResource("10_ljs3a")
 }, {
 "duration": 1.0,
-"texture": ExtResource("10_xtfs2")
+"texture": ExtResource("11_6gap5")
 }],
 "loop": true,
 "name": &"Walking",
@@ -54,7 +54,7 @@ radius = 41.19466
 [node name="BackgroundGraveWarde" type="Sprite2D" parent="."]
 position = Vector2(320.99997, 66.999985)
 scale = Vector2(0.3333333, 0.3333333)
-texture = ExtResource("1_3sl4o")
+texture = ExtResource("1_p5leo")
 
 [node name="Control" type="Control" parent="."]
 top_level = true
@@ -67,7 +67,7 @@ offset_bottom = 239.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Transition" parent="Control" instance=ExtResource("1_fafgb")]
+[node name="Transition" parent="Control" instance=ExtResource("2_qe7k8")]
 visible = false
 layout_mode = 1
 size_flags_horizontal = 3
@@ -77,10 +77,10 @@ size_flags_vertical = 3
 position = Vector2(60, 219)
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="Character" node_paths=PackedStringArray("transition", "sound")]
-script = ExtResource("2_3sl4o")
+script = ExtResource("3_44ioy")
 transition = NodePath("../../Control/Transition")
 sound = NodePath("../AudioStreamPlayer")
-scene_id = 1
+scene_id = 5
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Character/CharacterBody2D"]
 position = Vector2(4, -49)

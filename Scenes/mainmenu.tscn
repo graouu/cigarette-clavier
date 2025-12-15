@@ -1,16 +1,22 @@
-[gd_scene load_steps=2 format=3 uid="uid://s2jgojd0nsuv"]
+[gd_scene load_steps=4 format=3 uid="uid://s2jgojd0nsuv"]
+
+[ext_resource type="Script" uid="uid://cmqkgsbsot513" path="res://Scripts/mainmenu.gd" id="1_pposm"]
+[ext_resource type="PackedScene" uid="uid://dr252hvw8htoy" path="res://Scenes/transition.tscn" id="2_web8u"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_loy4s"]
 font_size = 50
 font_color = Color(0.04755766, 0.047557645, 0.047557645, 1)
 
-[node name="Control" type="Control"]
+[node name="Control" type="Control" node_paths=PackedStringArray("start_button", "transition")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_pposm")
+start_button = NodePath("ColorRect/VBoxContainer/Button")
+transition = NodePath("Transition")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -43,3 +49,8 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Start Game"
+
+[node name="Transition" parent="." instance=ExtResource("2_web8u")]
+layout_mode = 1
+
+[connection signal="pressed" from="ColorRect/VBoxContainer/Button" to="." method="_on_button_pressed"]

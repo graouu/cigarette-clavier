@@ -47,8 +47,9 @@ radius = 41.19466
 
 [node name="Character" type="Node2D"]
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." node_paths=PackedStringArray("sound")]
 script = ExtResource("1_qi5as")
+sound = NodePath("../AudioStreamPlayer")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
 position = Vector2(4, -49)
@@ -60,3 +61,5 @@ frame_progress = 0.85165405
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(-1, -44)
 shape = SubResource("CircleShape2D_7fmn4")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

@@ -119,7 +119,7 @@ compilation_button = NodePath("TextureRect/RichTextLabel/Run")
 button_container = NodePath("TextureRect/RichTextLabel/ButtonContainer")
 sound = NodePath("AudioStreamPlayer")
 transition = NodePath("Transition")
-scene_id = 6
+scene_id = 9
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1

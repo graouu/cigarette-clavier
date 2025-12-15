@@ -80,7 +80,7 @@ position = Vector2(60, 219)
 script = ExtResource("3_44ioy")
 transition = NodePath("../../Control/Transition")
 sound = NodePath("../AudioStreamPlayer")
-scene_id = 5
+scene_id = 7
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Character/CharacterBody2D"]
 position = Vector2(4, -49)

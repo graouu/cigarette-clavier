@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cki5amvxrr1ua"]
+[gd_scene load_steps=22 format=3 uid="uid://cki5amvxrr1ua"]
 
 [ext_resource type="Script" uid="uid://dkld1w71gheow" path="res://Scripts/typing_scene.gd" id="1_1in52"]
 [ext_resource type="Texture2D" uid="uid://da6c43qi7nr52" path="res://Images/phase1.png" id="2_wotmv"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dr252hvw8htoy" path="res://Scenes/transition.tscn" id="4_jlj0h"]
 [ext_resource type="AudioStream" uid="uid://7j7xsjbxy2yd" path="res://Assets/typing.mp3" id="5_fjhg1"]
 [ext_resource type="AudioStream" uid="uid://cp8svob55iaj2" path="res://Assets/error.mp3" id="5_wotmv"]
+[ext_resource type="Texture2D" uid="uid://plnkhklbk1bw" path="res://Images/hands.png" id="6_xhx8w"]
 
 [sub_resource type="Animation" id="Animation_dn4f4"]
 length = 0.001
@@ -118,7 +119,125 @@ _data = {
 &"compiling": SubResource("Animation_xandg")
 }
 
-[node name="Control3" type="Control" node_paths=PackedStringArray("computer_text", "compilation_button", "button_container", "sound", "transition")]
+[sub_resource type="AtlasTexture" id="AtlasTexture_jlj0h"]
+atlas = ExtResource("6_xhx8w")
+region = Rect2(0, 0, 744, 563)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fjhg1"]
+atlas = ExtResource("6_xhx8w")
+region = Rect2(744, 0, 744, 563)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n7cnw"]
+atlas = ExtResource("6_xhx8w")
+region = Rect2(1488, 0, 744, 563)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xhx8w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jlj0h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fjhg1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n7cnw")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hxhg4"]
+atlas = ExtResource("6_xhx8w")
+region = Rect2(1488, 563, 744, 563)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v6twp"]
+atlas = ExtResource("6_xhx8w")
+region = Rect2(0, 563, 744, 563)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_50ons"]
+atlas = ExtResource("6_xhx8w")
+region = Rect2(744, 563, 744, 563)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jlj0h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hxhg4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v6twp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_50ons")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="Animation" id="Animation_jlj0h"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(260.85, 539.70624)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(656.00006, 541)]
+}
+
+[sub_resource type="Animation" id="Animation_xhx8w"]
+resource_name = "intro"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(260.85, 722.66), Vector2(260.85, 539.70624)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D2:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(656, 722.66), Vector2(656.00006, 541)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fjhg1"]
+_data = {
+&"RESET": SubResource("Animation_jlj0h"),
+&"intro": SubResource("Animation_xhx8w")
+}
+
+[node name="Control3" type="Control" node_paths=PackedStringArray("computer_text", "compilation_button", "button_container", "sound", "transition", "hand1", "hand2")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -127,11 +246,13 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_1in52")
 computer_text = NodePath("TextureRect/RichTextLabel")
-code_lines = "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. "
+code_lines = "return group_info; [br] [br] [br]out_undo_partial_alloc: [br] [br]    while (--i >= 0) { [br] [br]        free_page((unsigned long)group_info->blocks[i]); [br] [br]    } [br] [br]    kfree(group_info); [br] [br]    return NULL; [br] [br]} [br] [br] [br] [br]EXPORT_SYMBOL(groups_alloc); [br] [br] [br] [br]void groups_free(struct group_info *group_info) [br] [br]{ [br] [br]    if (group_info->blocks[0] != group_info->small_block) { [br] [br]        int i; [br] [br]        for (i = 0; i < group_info->nblocks; i++) [br] [br][br]struct group_info init_groups = { .usage = ATOMIC_INIT(2) }; [br] [br]struct group_info *groups_alloc(int gidsetsize){ [br]    struct group_info *group_info; [br]    int nblocks; [br]    int i; [br] [br] [br]    nblocks = (gidsetsize + NGROUPS_PER_BLOCK - 1) / NGROUPS_PER_BLOCK; [br]    "
 compilation_button = NodePath("TextureRect/RichTextLabel/Run")
 button_container = NodePath("TextureRect/RichTextLabel/ButtonContainer")
 sound = NodePath("AudioStreamPlayer")
 transition = NodePath("Transition")
+hand1 = NodePath("AnimatedSprite2D")
+hand2 = NodePath("AnimatedSprite2D2")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -161,6 +282,7 @@ mouse_filter = 2
 theme = ExtResource("3_xhx8w")
 bbcode_enabled = true
 text = "Running"
+scroll_active = false
 scroll_following = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="TextureRect/RichTextLabel"]
@@ -219,12 +341,28 @@ rotation = 0.034906585
 theme = ExtResource("3_xhx8w")
 text = "keep trying"
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_fjhg1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(260.85, 539.70624)
+scale = Vector2(0.34717742, 0.38616782)
+sprite_frames = SubResource("SpriteFrames_xhx8w")
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+position = Vector2(656.00006, 541)
+scale = Vector2(0.34717742, 0.38616782)
+sprite_frames = SubResource("SpriteFrames_jlj0h")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_fjhg1")
+}
+autoplay = "intro"
+
 [node name="Transition" parent="." instance=ExtResource("4_jlj0h")]
 visible = false
 layout_mode = 1
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_fjhg1")
 
 [connection signal="pressed" from="TextureRect/RichTextLabel/Run" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="TextureRect/RichTextLabel/ButtonContainer/leave" to="." method="_on_leave_pressed"]

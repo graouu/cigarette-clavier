@@ -6,6 +6,9 @@ extends Control
 
 @onready var game_resource : GameResource = load("res://Assets/GameScenes.tres")
 
+func _ready() -> void:
+	transition.beginning()
+
 func _on_start_button_pressed() -> void:
 	transition.end()
 	await transition.end_done

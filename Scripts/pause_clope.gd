@@ -19,6 +19,7 @@ var cigarette_allumé = false
 var smoke_float = 0.0
 
 func _ready() -> void:
+	transition.beginning()
 	shader_smoke.set_shader_parameter("fire_alpha", smoke_float)
 	shader.set_shader_parameter("pixelation", pixelisation_float)
 
@@ -53,6 +54,16 @@ pass
 
 
 func _on_timer_timeout():
-	transition.end()
-	await transition.end_done
-	get_tree().change_scene_to_packed(game_resource.game_array[scene_id+1])
+	if scene_id == 11:
+		var tween = get_tree().create_tween()
+		var tween2 = get_tree().create_tween()
+		tween.tween_method(func(value): shader.set_shader_parameter("pixelation", value),  pixelisation_float, 1, 5).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN)
+		transition.self_modulate.a = 0
+		transition.show()
+		tween2.tween_property(transition, "self_modulate:a", 1,5).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN)
+		await get_tree().create_timer(6).timeout
+		get_tree().change_scene_to_packed(game_resource.game_array[scene_id+1])
+	else:
+		transition.end()
+		await transition.end_done
+		get_tree().change_scene_to_packed(game_resource.game_array[scene_id+1])

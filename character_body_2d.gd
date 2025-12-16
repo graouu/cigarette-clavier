@@ -15,6 +15,7 @@ var SoundOutPlaying = false
 @export var scene_id : int
 
 func _ready() -> void:
+	transition.beginning()
 	# maybe add to the black screen transition
 	sound.stream = SoundDoorOpen
 	sound.play()

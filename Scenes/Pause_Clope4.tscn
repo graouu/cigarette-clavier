@@ -233,11 +233,6 @@ material = SubResource("ShaderMaterial_lh243")
 offset_right = 1152.0
 offset_bottom = 648.0
 
-[node name="Transition" parent="." instance=ExtResource("2_ggqdw")]
-visible = false
-offset_right = 1157.0
-offset_bottom = 652.0
-
 [node name="Pixelisation" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_ab5g2")
 anchors_preset = 15
@@ -247,5 +242,9 @@ offset_right = 1150.0
 offset_bottom = 648.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Transition" parent="." instance=ExtResource("2_ggqdw")]
+offset_right = 1157.0
+offset_bottom = 652.0
 
 [connection signal="timeout" from="Durée_pause" to="." method="_on_timer_timeout"]

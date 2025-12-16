@@ -1,0 +1,124 @@
+[gd_scene load_steps=17 format=3 uid="uid://bs4apr0bjocwq"]
+
+[ext_resource type="Texture2D" uid="uid://cnrkbn4pio80r" path="res://Images/eviromentage.png" id="1_j0l71"]
+[ext_resource type="PackedScene" uid="uid://dr252hvw8htoy" path="res://Scenes/transition.tscn" id="2_roxli"]
+[ext_resource type="Script" uid="uid://n64q54b6bbbv" path="res://character_body_2d.gd" id="3_6jsku"]
+[ext_resource type="Texture2D" uid="uid://bmuc7fnbd6v00" path="res://Images/ZombiAnimation/ZombiMove9.png" id="4_mqjdc"]
+[ext_resource type="Texture2D" uid="uid://cr3v3misew3e8" path="res://Images/ZombiAnimation/ZombiMove10.png" id="5_o55ev"]
+[ext_resource type="Texture2D" uid="uid://dslgjpuv725ws" path="res://Images/ZombiAnimation/ZombiMove11.png" id="6_14nss"]
+[ext_resource type="Texture2D" uid="uid://c37tkhp7tntqa" path="res://Images/ZombiAnimation/ZombiMove12.png" id="7_b43ll"]
+[ext_resource type="Texture2D" uid="uid://dltf7wkyxf44g" path="res://Images/ZombiAnimation/ZombiMove13.png" id="8_5uska"]
+[ext_resource type="Texture2D" uid="uid://by0w6i7knwk3w" path="res://Images/ZombiAnimation/ZombiMove14.png" id="9_v242m"]
+[ext_resource type="Texture2D" uid="uid://caugsauxhiyn4" path="res://Images/ZombiAnimation/ZombiMove15.png" id="10_r5m7o"]
+[ext_resource type="Texture2D" uid="uid://c161o4lvbys4t" path="res://Images/ZombiAnimation/ZombiMove16.png" id="11_hkog7"]
+[ext_resource type="Shader" uid="uid://dptoydrs4igu" path="res://Assets/pixel.gdshader" id="12_roxli"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r5xsm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_mqjdc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_o55ev")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_14nss")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_b43ll")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_5uska")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_v242m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_r5m7o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_hkog7")
+}],
+"loop": true,
+"name": &"Walking",
+"speed": 6.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7fmn4"]
+radius = 41.19466
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_osijd"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6jsku"]
+shader = ExtResource("12_roxli")
+shader_parameter/pixelation = 0.00800000038
+shader_parameter/opacity = 1.0
+
+[node name="Transition" type="Node2D"]
+
+[node name="BackgroundGraveWarde" type="Sprite2D" parent="."]
+position = Vector2(320.99997, 66.999985)
+scale = Vector2(0.3333333, 0.3333333)
+texture = ExtResource("1_j0l71")
+
+[node name="Control" type="Control" parent="."]
+top_level = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = -2.0
+offset_top = -115.0
+offset_right = 639.0
+offset_bottom = 239.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Transition" parent="Control" instance=ExtResource("2_roxli")]
+visible = false
+layout_mode = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Character" type="Node2D" parent="."]
+position = Vector2(60, 219)
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="Character" node_paths=PackedStringArray("transition", "sound")]
+script = ExtResource("3_6jsku")
+transition = NodePath("../../Control/Transition")
+sound = NodePath("../AudioStreamPlayer")
+scene_id = 10
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Character/CharacterBody2D"]
+position = Vector2(4, -49)
+sprite_frames = SubResource("SpriteFrames_r5xsm")
+animation = &"Walking"
+autoplay = "Walking"
+frame_progress = 0.85165405
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Character/CharacterBody2D"]
+position = Vector2(-1, -44)
+shape = SubResource("CircleShape2D_7fmn4")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Character"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(321, 67)
+zoom = Vector2(1.8, 1.8)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(125, 217)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_osijd")
+
+[node name="Pixelisation" type="ColorRect" parent="."]
+top_level = true
+material = SubResource("ShaderMaterial_6jsku")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -113.0
+offset_right = -501.0
+offset_bottom = -396.0
+grow_horizontal = 2
+grow_vertical = 2

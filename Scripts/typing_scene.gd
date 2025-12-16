@@ -54,5 +54,8 @@ func _on_leave_pressed() -> void:
 	sound.play()
 	transition.end()
 	await transition.end_done
-	get_tree().change_scene_to_packed(game_resource.game_array[scene_id+1])
+	if game_resource.game_array.size() == scene_id+1:
+		get_tree().change_scene_to_packed(game_resource.game_array[0])
+	else:
+		get_tree().change_scene_to_packed(game_resource.game_array[scene_id+1])
 	

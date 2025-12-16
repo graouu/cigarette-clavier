@@ -1,10 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://bht5qp2inlvyx"]
+[gd_scene load_steps=12 format=3 uid="uid://bht5qp2inlvyx"]
 
 [ext_resource type="Script" uid="uid://dkld1w71gheow" path="res://Scripts/typing_scene.gd" id="1_v8n82"]
 [ext_resource type="Texture2D" uid="uid://cu07hhxow305k" path="res://Images/phase3.png" id="2_v8n82"]
 [ext_resource type="Theme" uid="uid://cnrmgawvhwgx8" path="res://Assets/screen_font.tres" id="3_wa4xm"]
 [ext_resource type="PackedScene" uid="uid://dr252hvw8htoy" path="res://Scenes/transition.tscn" id="4_m7p4q"]
 [ext_resource type="AudioStream" uid="uid://7j7xsjbxy2yd" path="res://Assets/typing.mp3" id="5_jkm85"]
+[ext_resource type="AudioStream" uid="uid://cp8svob55iaj2" path="res://Assets/error.mp3" id="5_m1khn"]
+[ext_resource type="Shader" uid="uid://dptoydrs4igu" path="res://Assets/pixel.gdshader" id="7_wa4xm"]
 
 [sub_resource type="Animation" id="Animation_dn4f4"]
 length = 0.001
@@ -62,12 +64,41 @@ tracks/1/keys = {
 "update": 1,
 "values": [false, true]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../AudioStreamPlayer:stream")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.38),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("5_jkm85"), ExtResource("5_m1khn")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../../AudioStreamPlayer:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(2.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_s71e2"]
 _data = {
 &"RESET": SubResource("Animation_dn4f4"),
 &"compiling": SubResource("Animation_xandg")
 }
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m7p4q"]
+shader = ExtResource("7_wa4xm")
+shader_parameter/pixelation = 0.00400000019
+shader_parameter/opacity = 1.0
 
 [node name="Control2" type="Control" node_paths=PackedStringArray("computer_text", "compilation_button", "button_container", "sound", "transition")]
 layout_mode = 3
@@ -83,7 +114,7 @@ compilation_button = NodePath("TextureRect/RichTextLabel/Run")
 button_container = NodePath("TextureRect/RichTextLabel/ButtonContainer")
 sound = NodePath("AudioStreamPlayer")
 transition = NodePath("Transition")
-scene_id = 2
+scene_id = 6
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -175,6 +206,15 @@ layout_mode = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_jkm85")
+
+[node name="Pixelisation" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_m7p4q")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [connection signal="pressed" from="TextureRect/RichTextLabel/Run" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="TextureRect/RichTextLabel/ButtonContainer/leave" to="." method="_on_leave_pressed"]

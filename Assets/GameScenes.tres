@@ -1,12 +1,20 @@
-[gd_resource type="Resource" script_class="GameResource" load_steps=6 format=3 uid="uid://c1u0gepoi0svh"]
+[gd_resource type="Resource" script_class="GameResource" load_steps=14 format=3 uid="uid://c1u0gepoi0svh"]
 
 [ext_resource type="Script" uid="uid://b6umj06uxoott" path="res://Scripts/GameResource.gd" id="1_4y4bu"]
 [ext_resource type="PackedScene" uid="uid://1v5bdmpqq4wg" path="res://Scenes/programming1.tscn" id="1_8ektb"]
+[ext_resource type="PackedScene" uid="uid://dbu7tyi076bp6" path="res://Scenes/Pause_Clope1.tscn" id="1_qjc0q"]
+[ext_resource type="PackedScene" uid="uid://gq0550icxpb1" path="res://Scenes/GoOut1.tscn" id="2_5e201"]
 [ext_resource type="PackedScene" uid="uid://dft2odq0it3yp" path="res://Scenes/programming2.tscn" id="3_838gq"]
 [ext_resource type="PackedScene" uid="uid://bht5qp2inlvyx" path="res://Scenes/programming3.tscn" id="3_brrgs"]
 [ext_resource type="PackedScene" uid="uid://g5f4k1giivdi" path="res://Scenes/programming4.tscn" id="4_43gmw"]
+[ext_resource type="PackedScene" uid="uid://piell13gmkqt" path="res://Scenes/Pause_Clope2.tscn" id="4_bpiv7"]
+[ext_resource type="PackedScene" uid="uid://lhwtt8sdeklf" path="res://Scenes/GoOut2.tscn" id="4_s7he7"]
+[ext_resource type="PackedScene" uid="uid://00exfm1c1v86" path="res://Scenes/GoOut3.tscn" id="6_5e201"]
+[ext_resource type="PackedScene" uid="uid://c035mikn0kskf" path="res://Scenes/Pause_Clope3.tscn" id="7_05tix"]
+[ext_resource type="PackedScene" uid="uid://bs4apr0bjocwq" path="res://Scenes/GoOut4.tscn" id="8_s7he7"]
+[ext_resource type="PackedScene" uid="uid://dsn5g548xy8xf" path="res://Scenes/Pause_Clope4.tscn" id="10_77ah2"]
 
 [resource]
 script = ExtResource("1_4y4bu")
-game_array = Array[PackedScene]([ExtResource("1_8ektb"), ExtResource("3_838gq"), ExtResource("3_brrgs"), ExtResource("4_43gmw")])
+game_array = Array[PackedScene]([ExtResource("1_8ektb"), ExtResource("2_5e201"), ExtResource("1_qjc0q"), ExtResource("3_838gq"), ExtResource("4_s7he7"), ExtResource("4_bpiv7"), ExtResource("3_brrgs"), ExtResource("6_5e201"), ExtResource("7_05tix"), ExtResource("4_43gmw"), ExtResource("8_s7he7"), ExtResource("10_77ah2")])
 metadata/_custom_type_script = "uid://b6umj06uxoott"

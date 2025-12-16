@@ -1,0 +1,206 @@
+[gd_scene load_steps=16 format=3 uid="uid://dbu7tyi076bp6"]
+
+[ext_resource type="Script" uid="uid://c7amkvrcfg3h0" path="res://Scripts/pause_clope.gd" id="1_kmovn"]
+[ext_resource type="AudioStream" uid="uid://dyb8qfp1c5kmf" path="res://Assets/lighting.mp3" id="2_40dfy"]
+[ext_resource type="AudioStream" uid="uid://dbnaygdncenq4" path="res://Assets/exhale.mp3" id="3_ul0gq"]
+[ext_resource type="PackedScene" uid="uid://dr252hvw8htoy" path="res://Scenes/transition.tscn" id="4_40dfy"]
+[ext_resource type="Shader" uid="uid://dptoydrs4igu" path="res://Assets/pixel.gdshader" id="5_13jd6"]
+[ext_resource type="Texture2D" uid="uid://c5mpmomvgttb3" path="res://Images/placeholder.webp" id="6_j0h82"]
+
+[sub_resource type="Animation" id="Animation_58k75"]
+resource_name = "Allumer_Cigarette"
+length = 2.691
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Lighting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("2_40dfy")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ProgressBar:modulate")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.02),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_0vttn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ProgressBar:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pixelisation:material:shader_parameter/pixelation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0030000001425]
+}
+
+[sub_resource type="Animation" id="Animation_0j2yk"]
+resource_name = "Tirer_Cigarette"
+length = 3.5
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Exhale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_ul0gq")
+}],
+"times": PackedFloat32Array(1.6666666)
+}
+tracks/0/use_blend = true
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Lighting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 1.0692052,
+"stream": ExtResource("2_40dfy")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pixelisation:material:shader_parameter/pixelation")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2.0333333, 3.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0010000000475, 0.050000002375, 0.0010000000475]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0vttn"]
+_data = {
+&"Allumer_Cigarette": SubResource("Animation_58k75"),
+&"RESET": SubResource("Animation_0vttn"),
+&"Tirer_Cigarette": SubResource("Animation_0j2yk")
+}
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_13jd6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_j0h82")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8y6jq"]
+shader = ExtResource("5_13jd6")
+shader_parameter/pixelation = 0.0030000001425
+shader_parameter/opacity = 1.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_40dfy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_81fow"]
+bg_color = Color(1, 0.68235296, 0.6313726, 0.49019608)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[sub_resource type="Theme" id="Theme_81fow"]
+ProgressBar/styles/background = SubResource("StyleBoxEmpty_40dfy")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_81fow")
+
+[node name="PauseClope" type="Node2D" node_paths=PackedStringArray("Animateur", "bar", "timer", "transition")]
+script = ExtResource("1_kmovn")
+Animateur = NodePath("Allumer_Clope")
+bar = NodePath("ProgressBar")
+timer = NodePath("Durée_pause")
+scene_id = 2
+transition = NodePath("Transition")
+
+[node name="Allumer_Clope" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_0vttn")
+}
+
+[node name="Durée_pause" type="Timer" parent="."]
+wait_time = 30.0
+one_shot = true
+
+[node name="Lighting" type="AudioStreamPlayer2D" parent="."]
+
+[node name="Exhale" type="AudioStreamPlayer2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(585, 329.99997)
+scale = Vector2(0.60625, 0.50624996)
+sprite_frames = SubResource("SpriteFrames_13jd6")
+
+[node name="Pixelisation" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_8y6jq")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1150.0
+offset_bottom = 648.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 33.0
+offset_top = 585.0
+offset_right = 401.0
+offset_bottom = 624.0
+grow_horizontal = 2
+theme = SubResource("Theme_81fow")
+max_value = 30.0
+step = 0.1
+show_percentage = false
+
+[node name="Transition" parent="." instance=ExtResource("4_40dfy")]
+visible = false
+offset_right = 1157.0
+offset_bottom = 652.0
+
+[connection signal="timeout" from="Durée_pause" to="." method="_on_timer_timeout"]

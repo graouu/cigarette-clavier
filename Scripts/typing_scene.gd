@@ -7,6 +7,9 @@ extends Control
 @export var sound : AudioStreamPlayer
 @export var transition : Transitor
 @export var scene_id : int
+@export var hand1 : AnimatedSprite2D
+@export var hand2 : AnimatedSprite2D
+
 
 
 @onready var game_resource : GameResource = load("res://Assets/GameScenes.tres")
@@ -27,9 +30,12 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event is not InputEventMouseMotion and event.is_pressed() and !done:
+		hand1.play()
+		hand2.play()
 		number_of_inputs+=5
 		computer_text.text = code_lines.substr(0,number_of_inputs)
 		if number_of_inputs >= code_size:
+			done = true
 			compilation_button.show()
 		else:
 			sound.pitch_scale = randf_range(0.8,1.2)
@@ -37,7 +43,6 @@ func _input(event: InputEvent) -> void:
 			sound.play()
 
 func _on_button_pressed() -> void:
-	done = true
 	compilation_button.hide()
 	sound.stream = mouse_click
 	sound.play()

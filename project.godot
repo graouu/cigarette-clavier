@@ -15,6 +15,10 @@ run/main_scene="uid://s2jgojd0nsuv"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="uid://dag3ltl3qs4ml"
 
+[autoload]
+
+SoundManager="*res://Assets/sound_manager.tscn"
+
 [display]
 
 window/size/resizable=false

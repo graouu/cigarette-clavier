@@ -14,11 +14,13 @@ extends Node2D
 @onready var shader_smoke = smoke.material
 
 var cigarette_allumé = false
-var pixelisation_float = 0.001
+@export var pixelisation_float : float
+@export var next_pixelation_float : float
 var smoke_float = 0.0
 
 func _ready() -> void:
 	shader_smoke.set_shader_parameter("fire_alpha", smoke_float)
+	shader.set_shader_parameter("pixelation", pixelisation_float)
 
 func _process(_delta: float) -> void:
 	bar.value = timer.time_left
@@ -29,12 +31,13 @@ func _input(event):
 			Animateur.play("Tirer_Cigarette")
 			sprite.play("Tire")
 			var tween = get_tree().create_tween()
-			tween.tween_method(func(value): shader.set_shader_parameter("pixelation", value),  pixelisation_float, pixelisation_float+0.007, 1).set_trans(Tween.TRANS_BOUNCE)
-			tween.tween_method(func(value): shader.set_shader_parameter("pixelation", value),  pixelisation_float+0.007, pixelisation_float+0.001, 1)
+			tween.tween_method(func(value): shader.set_shader_parameter("pixelation", value),  pixelisation_float, next_pixelation_float, 1).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+			tween.tween_method(func(value): shader.set_shader_parameter("pixelation", value),  next_pixelation_float, pixelisation_float+0.001, 2.5).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 			tween.tween_method(func(value): shader_smoke.set_shader_parameter("fire_alpha", value),  smoke_float, smoke_float+0.2, 2).set_trans(Tween.TRANS_BOUNCE)
 			smoke_float+=0.2
+			pixelisation_float += 0.002
+			next_pixelation_float += 0.002
 			
-			pixelisation_float += 0.001
 			await Animateur.animation_finished
 			if !timer.time_left<=3:
 				timer.start(timer.time_left-3)

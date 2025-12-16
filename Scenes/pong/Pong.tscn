@@ -1,0 +1,83 @@
+[gd_scene load_steps=12 format=3 uid="uid://b0st62raglwr3"]
+
+[ext_resource type="Texture2D" uid="uid://b6lc60a16fnen" path="res://Assets/Pong/separator.png" id="2_88wib"]
+[ext_resource type="Script" uid="uid://bsdu6xvempnsj" path="res://Scenes/pong/player_paddle.gd" id="3_takti"]
+[ext_resource type="Texture2D" uid="uid://cyx18r1ifqp1r" path="res://Assets/Pong/left_pallete.png" id="4_quvn0"]
+[ext_resource type="Script" uid="uid://h53xxv3iwnv5" path="res://Scenes/pong/ball.gd" id="5_n5ync"]
+[ext_resource type="Texture2D" uid="uid://cmuweqbgtkxaw" path="res://Assets/Pong/ball.png" id="6_yvl27"]
+[ext_resource type="Script" uid="uid://bb163pvtsitao" path="res://Scenes/pong/ennemi_paddle_2.gd" id="7_en5gq"]
+[ext_resource type="Texture2D" uid="uid://c45dsibh6i35s" path="res://Assets/Pong/right_pallete.png" id="8_h840q"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tbcxd"]
+radius = 24.0
+height = 192.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cghwj"]
+radius = 21.023796
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sfkpr"]
+radius = 24.0
+height = 192.00012
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5ig22"]
+size = Vector2(64, 1232)
+
+[node name="Pong" type="Node2D"]
+
+[node name="Separator" type="Sprite2D" parent="."]
+position = Vector2(-704, -336)
+scale = Vector2(4.0001755, 3.6599998)
+texture = ExtResource("2_88wib")
+offset = Vector2(320, 200)
+
+[node name="PlayerPaddle" type="CharacterBody2D" parent="."]
+position = Vector2(0, -96)
+motion_mode = 1
+script = ExtResource("3_takti")
+
+[node name="LeftPallete" type="Sprite2D" parent="PlayerPaddle"]
+position = Vector2(80, 256)
+scale = Vector2(4.000002, 6.0000005)
+texture = ExtResource("4_quvn0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerPaddle"]
+position = Vector2(72, 256)
+shape = SubResource("CapsuleShape2D_tbcxd")
+
+[node name="Ball" type="CharacterBody2D" parent="." node_paths=PackedStringArray("sound")]
+position = Vector2(580, 352)
+script = ExtResource("5_n5ync")
+sound = NodePath("../AudioStreamPlayer")
+
+[node name="Ball" type="Sprite2D" parent="Ball"]
+scale = Vector2(4.999998, 5)
+texture = ExtResource("6_yvl27")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
+shape = SubResource("CircleShape2D_cghwj")
+
+[node name="EnnemiPaddle2" type="CharacterBody2D" parent="."]
+position = Vector2(1072, 488)
+script = ExtResource("7_en5gq")
+
+[node name="RightPallete" type="Sprite2D" parent="EnnemiPaddle2"]
+scale = Vector2(3.9999893, 6.000001)
+texture = ExtResource("8_h840q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnnemiPaddle2"]
+position = Vector2(8, 0)
+shape = SubResource("CapsuleShape2D_sfkpr")
+
+[node name="BorderBounce" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="BorderBounce"]
+position = Vector2(584, -32)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_5ig22")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="BorderBounce"]
+position = Vector2(576, 680)
+rotation = -1.5707964
+shape = SubResource("RectangleShape2D_5ig22")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

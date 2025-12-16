@@ -1,6 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://00exfm1c1v86"]
+[gd_scene load_steps=17 format=3 uid="uid://00exfm1c1v86"]
 
 [ext_resource type="Texture2D" uid="uid://bokipapxlol2r" path="res://Images/eviromentadult.png" id="1_p5leo"]
+[ext_resource type="Shader" uid="uid://dptoydrs4igu" path="res://Assets/pixel.gdshader" id="1_qe7k8"]
 [ext_resource type="PackedScene" uid="uid://dr252hvw8htoy" path="res://Scenes/transition.tscn" id="2_qe7k8"]
 [ext_resource type="Script" uid="uid://n64q54b6bbbv" path="res://character_body_2d.gd" id="3_44ioy"]
 [ext_resource type="Texture2D" uid="uid://bmuc7fnbd6v00" path="res://Images/ZombiAnimation/ZombiMove9.png" id="4_ogdgd"]
@@ -11,6 +12,11 @@
 [ext_resource type="Texture2D" uid="uid://by0w6i7knwk3w" path="res://Images/ZombiAnimation/ZombiMove14.png" id="9_qumod"]
 [ext_resource type="Texture2D" uid="uid://caugsauxhiyn4" path="res://Images/ZombiAnimation/ZombiMove15.png" id="10_ljs3a"]
 [ext_resource type="Texture2D" uid="uid://c161o4lvbys4t" path="res://Images/ZombiAnimation/ZombiMove16.png" id="11_6gap5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_44ioy"]
+shader = ExtResource("1_qe7k8")
+shader_parameter/pixelation = 0.006000000284999999
+shader_parameter/opacity = 1.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_r5xsm"]
 animations = [{
@@ -50,6 +56,18 @@ radius = 41.19466
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_osijd"]
 
 [node name="Transition" type="Node2D"]
+
+[node name="Pixelisation" type="ColorRect" parent="."]
+top_level = true
+material = SubResource("ShaderMaterial_44ioy")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -113.0
+offset_right = 640.0
+offset_bottom = 248.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="BackgroundGraveWarde" type="Sprite2D" parent="."]
 position = Vector2(320.99997, 66.999985)

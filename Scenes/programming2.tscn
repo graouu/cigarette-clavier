@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dft2odq0it3yp"]
+[gd_scene load_steps=12 format=3 uid="uid://dft2odq0it3yp"]
 
 [ext_resource type="Script" uid="uid://dkld1w71gheow" path="res://Scripts/typing_scene.gd" id="1_406ts"]
 [ext_resource type="Texture2D" uid="uid://1s3kun1jrpu6" path="res://Images/phase2.png" id="2_406ts"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dr252hvw8htoy" path="res://Scenes/transition.tscn" id="4_id6jy"]
 [ext_resource type="AudioStream" uid="uid://cp8svob55iaj2" path="res://Assets/error.mp3" id="5_frat6"]
 [ext_resource type="AudioStream" uid="uid://7j7xsjbxy2yd" path="res://Assets/typing.mp3" id="5_qtqph"]
+[ext_resource type="Shader" uid="uid://dptoydrs4igu" path="res://Assets/pixel.gdshader" id="7_ra1jg"]
 
 [sub_resource type="Animation" id="Animation_dn4f4"]
 length = 0.001
@@ -93,6 +94,11 @@ _data = {
 &"RESET": SubResource("Animation_dn4f4"),
 &"compiling": SubResource("Animation_xandg")
 }
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_id6jy"]
+shader = ExtResource("7_ra1jg")
+shader_parameter/pixelation = 0.0030000001425
+shader_parameter/opacity = 1.0
 
 [node name="Control2" type="Control" node_paths=PackedStringArray("computer_text", "compilation_button", "button_container", "sound", "transition")]
 layout_mode = 3
@@ -201,6 +207,15 @@ layout_mode = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_qtqph")
+
+[node name="Pixelisation" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_id6jy")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [connection signal="pressed" from="TextureRect/RichTextLabel/Run" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="TextureRect/RichTextLabel/ButtonContainer/leave" to="." method="_on_leave_pressed"]

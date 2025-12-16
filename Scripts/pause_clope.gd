@@ -16,6 +16,8 @@ func _input(event):
 	if event.is_action_pressed("allumer") and !Animateur.is_playing():
 		if cigarette_allumé:
 			Animateur.play("Tirer_Cigarette")
+			await Animateur.animation_finished
+			timer.start(timer.time_left-3)
 		else:
 			Animateur.play("Allumer_Cigarette")
 			cigarette_allumé = true

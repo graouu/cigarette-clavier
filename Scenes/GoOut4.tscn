@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bs4apr0bjocwq"]
+[gd_scene load_steps=17 format=3 uid="uid://bs4apr0bjocwq"]
 
 [ext_resource type="Texture2D" uid="uid://cnrkbn4pio80r" path="res://Images/eviromentage.png" id="1_j0l71"]
 [ext_resource type="PackedScene" uid="uid://dr252hvw8htoy" path="res://Scenes/transition.tscn" id="2_roxli"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://by0w6i7knwk3w" path="res://Images/ZombiAnimation/ZombiMove14.png" id="9_v242m"]
 [ext_resource type="Texture2D" uid="uid://caugsauxhiyn4" path="res://Images/ZombiAnimation/ZombiMove15.png" id="10_r5m7o"]
 [ext_resource type="Texture2D" uid="uid://c161o4lvbys4t" path="res://Images/ZombiAnimation/ZombiMove16.png" id="11_hkog7"]
+[ext_resource type="Shader" uid="uid://dptoydrs4igu" path="res://Assets/pixel.gdshader" id="12_roxli"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_r5xsm"]
 animations = [{
@@ -48,6 +49,11 @@ animations = [{
 radius = 41.19466
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_osijd"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6jsku"]
+shader = ExtResource("12_roxli")
+shader_parameter/pixelation = 0.00800000038
+shader_parameter/opacity = 1.0
 
 [node name="Transition" type="Node2D"]
 
@@ -104,3 +110,15 @@ position = Vector2(125, 217)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("WorldBoundaryShape2D_osijd")
+
+[node name="Pixelisation" type="ColorRect" parent="."]
+top_level = true
+material = SubResource("ShaderMaterial_6jsku")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -113.0
+offset_right = -501.0
+offset_bottom = -396.0
+grow_horizontal = 2
+grow_vertical = 2

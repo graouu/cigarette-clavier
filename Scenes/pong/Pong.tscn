@@ -1,83 +1,158 @@
-[gd_scene load_steps=12 format=3 uid="uid://b0st62raglwr3"]
+[gd_scene load_steps=16 format=3 uid="uid://b0st62raglwr3"]
 
-[ext_resource type="Texture2D" uid="uid://b6lc60a16fnen" path="res://Assets/Pong/separator.png" id="2_88wib"]
+[ext_resource type="Texture2D" uid="uid://bn7c4cn7ktk27" path="res://Images/Pong/Paddle1.png" id="2_rgpvd"]
 [ext_resource type="Script" uid="uid://bsdu6xvempnsj" path="res://Scenes/pong/player_paddle.gd" id="3_takti"]
-[ext_resource type="Texture2D" uid="uid://cyx18r1ifqp1r" path="res://Assets/Pong/left_pallete.png" id="4_quvn0"]
+[ext_resource type="Texture2D" uid="uid://cg3ejmpo5pspu" path="res://Images/Pong/BallPong.png" id="4_s25mq"]
 [ext_resource type="Script" uid="uid://h53xxv3iwnv5" path="res://Scenes/pong/ball.gd" id="5_n5ync"]
-[ext_resource type="Texture2D" uid="uid://cmuweqbgtkxaw" path="res://Assets/Pong/ball.png" id="6_yvl27"]
+[ext_resource type="Texture2D" uid="uid://1rfmht6pd8g6" path="res://Images/Pong/Paddle2.png" id="6_88wib"]
 [ext_resource type="Script" uid="uid://bb163pvtsitao" path="res://Scenes/pong/ennemi_paddle_2.gd" id="7_en5gq"]
-[ext_resource type="Texture2D" uid="uid://c45dsibh6i35s" path="res://Assets/Pong/right_pallete.png" id="8_h840q"]
+[ext_resource type="Theme" path="res://Assets/screen_font.tres" id="8_88wib"]
+[ext_resource type="Texture2D" uid="uid://da6c43qi7nr52" path="res://Images/phase1.png" id="8_s25mq"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tbcxd"]
-radius = 24.0
-height = 192.0
+radius = 3.0
+height = 64.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cghwj"]
-radius = 21.023796
+radius = 5.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sfkpr"]
-radius = 24.0
-height = 192.00012
+radius = 3.0
+height = 64.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5ig22"]
-size = Vector2(64, 1232)
+size = Vector2(32, 512)
+
+[sub_resource type="Animation" id="Animation_s25mq"]
+resource_name = "load"
+length = 1.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RichTextLabel:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.03333333, 0.2, 0.36666667, 0.53333336, 0.8, 0.96666664, 1.1333333, 1.3, 1.4666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": ["G", "Ga", "Gam", "Game", "Game ", "Game O", "Game Ov", "Game Ove", "Game Over"]
+}
+
+[sub_resource type="Animation" id="Animation_88wib"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RichTextLabel:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Game Over"]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_takti"]
+_data = {
+&"RESET": SubResource("Animation_88wib"),
+&"load": SubResource("Animation_s25mq")
+}
 
 [node name="Pong" type="Node2D"]
 
-[node name="Separator" type="Sprite2D" parent="."]
-position = Vector2(-704, -336)
-scale = Vector2(4.0001755, 3.6599998)
-texture = ExtResource("2_88wib")
-offset = Vector2(320, 200)
+[node name="Node2D" type="Node2D" parent="."]
 
 [node name="PlayerPaddle" type="CharacterBody2D" parent="."]
 position = Vector2(0, -96)
 motion_mode = 1
 script = ExtResource("3_takti")
 
-[node name="LeftPallete" type="Sprite2D" parent="PlayerPaddle"]
-position = Vector2(80, 256)
-scale = Vector2(4.000002, 6.0000005)
-texture = ExtResource("4_quvn0")
+[node name="Paddle1" type="Sprite2D" parent="PlayerPaddle"]
+position = Vector2(392.00003, 288)
+scale = Vector2(0.26666686, 0.21333334)
+texture = ExtResource("2_rgpvd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerPaddle"]
-position = Vector2(72, 256)
+position = Vector2(392, 288)
 shape = SubResource("CapsuleShape2D_tbcxd")
 
-[node name="Ball" type="CharacterBody2D" parent="." node_paths=PackedStringArray("sound")]
-position = Vector2(580, 352)
+[node name="Ball" type="CharacterBody2D" parent="." node_paths=PackedStringArray("sound", "SpriteBall", "SpritePaddle1", "SpritePaddle2", "computer_text", "anim")]
+position = Vector2(576, 240)
 script = ExtResource("5_n5ync")
 sound = NodePath("../AudioStreamPlayer")
+SpriteBall = NodePath(".")
+SpritePaddle1 = NodePath("../PlayerPaddle")
+SpritePaddle2 = NodePath("../EnnemiPaddle2")
+computer_text = NodePath("../TextureRect/RichTextLabel")
+code_lines = "Game Over"
+anim = NodePath("../TextureRect/RichTextLabel/AnimationPlayer")
 
-[node name="Ball" type="Sprite2D" parent="Ball"]
-scale = Vector2(4.999998, 5)
-texture = ExtResource("6_yvl27")
+[node name="BallPong" type="Sprite2D" parent="Ball"]
+position = Vector2(-3.000002, -4.000002)
+scale = Vector2(0.62499976, 0.62499976)
+texture = ExtResource("4_s25mq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
+position = Vector2(-3, -4)
 shape = SubResource("CircleShape2D_cghwj")
 
-[node name="EnnemiPaddle2" type="CharacterBody2D" parent="."]
-position = Vector2(1072, 488)
+[node name="EnnemiPaddle2" type="CharacterBody2D" parent="." node_paths=PackedStringArray("ball")]
+position = Vector2(776, 320)
 script = ExtResource("7_en5gq")
+ball = NodePath("../Ball")
 
-[node name="RightPallete" type="Sprite2D" parent="EnnemiPaddle2"]
-scale = Vector2(3.9999893, 6.000001)
-texture = ExtResource("8_h840q")
+[node name="Paddle2" type="Sprite2D" parent="EnnemiPaddle2"]
+position = Vector2(-16, -24.000004)
+scale = Vector2(0.26666644, 0.21333334)
+texture = ExtResource("6_88wib")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnnemiPaddle2"]
-position = Vector2(8, 0)
+position = Vector2(-16, -24)
 shape = SubResource("CapsuleShape2D_sfkpr")
 
 [node name="BorderBounce" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="BorderBounce"]
-position = Vector2(584, -32)
+position = Vector2(576, 56)
 rotation = 1.5707964
 shape = SubResource("RectangleShape2D_5ig22")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="BorderBounce"]
-position = Vector2(576, 680)
+position = Vector2(576, 400)
 rotation = -1.5707964
 shape = SubResource("RectangleShape2D_5ig22")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="Phase1" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(576.00006, 324.00003)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("8_s25mq")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TextureRect"]
+layout_mode = 0
+offset_left = 536.0
+offset_top = 216.0
+offset_right = 656.0
+offset_bottom = 248.0
+theme = ExtResource("8_88wib")
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+theme_override_font_sizes/bold_italics_font_size = 20
+theme_override_font_sizes/italics_font_size = 20
+theme_override_font_sizes/mono_font_size = 20
+text = "Game Over"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TextureRect/RichTextLabel"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_takti")
+}

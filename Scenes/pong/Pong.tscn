@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b0st62raglwr3"]
+[gd_scene load_steps=19 format=3 uid="uid://b0st62raglwr3"]
 
 [ext_resource type="Texture2D" uid="uid://bn7c4cn7ktk27" path="res://Images/Pong/Paddle1.png" id="2_rgpvd"]
 [ext_resource type="Script" uid="uid://bsdu6xvempnsj" path="res://Scenes/pong/player_paddle.gd" id="3_takti"]
@@ -6,39 +6,22 @@
 [ext_resource type="Script" uid="uid://h53xxv3iwnv5" path="res://Scenes/pong/ball.gd" id="5_n5ync"]
 [ext_resource type="Texture2D" uid="uid://1rfmht6pd8g6" path="res://Images/Pong/Paddle2.png" id="6_88wib"]
 [ext_resource type="Script" uid="uid://bb163pvtsitao" path="res://Scenes/pong/ennemi_paddle_2.gd" id="7_en5gq"]
-[ext_resource type="Theme" path="res://Assets/screen_font.tres" id="8_88wib"]
+[ext_resource type="Theme" uid="uid://cnrmgawvhwgx8" path="res://Assets/screen_font.tres" id="8_88wib"]
 [ext_resource type="Texture2D" uid="uid://da6c43qi7nr52" path="res://Images/phase1.png" id="8_s25mq"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tbcxd"]
 radius = 3.0
 height = 64.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_cghwj"]
-radius = 5.0
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sfkpr"]
 radius = 3.0
 height = 64.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_cghwj"]
+radius = 5.0
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5ig22"]
 size = Vector2(32, 512)
-
-[sub_resource type="Animation" id="Animation_s25mq"]
-resource_name = "load"
-length = 1.5
-loop_mode = 2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("RichTextLabel:text")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.03333333, 0.2, 0.36666667, 0.53333336, 0.8, 0.96666664, 1.1333333, 1.3, 1.4666667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": ["G", "Ga", "Gam", "Game", "Game ", "Game O", "Game Ov", "Game Ove", "Game Over"]
-}
 
 [sub_resource type="Animation" id="Animation_88wib"]
 length = 0.001
@@ -55,10 +38,135 @@ tracks/0/keys = {
 "values": ["Game Over"]
 }
 
+[sub_resource type="Animation" id="Animation_s25mq"]
+resource_name = "load"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RichTextLabel:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.03333333, 0.2, 0.36666667, 0.53333336, 0.8, 0.96666664, 1.1333333, 1.3, 1.4666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": ["G", "Ga", "Gam", "Game", "Game ", "Game O", "Game Ov", "Game Ove", "Game Over"]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_takti"]
 _data = {
 &"RESET": SubResource("Animation_88wib"),
 &"load": SubResource("Animation_s25mq")
+}
+
+[sub_resource type="Animation" id="Animation_takti"]
+resource_name = "Entry"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Phase1:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(90, 90), Vector2(0.6, 0.6)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EnnemiPaddle2/Paddle2:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 4.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(40.05, 31.95), Vector2(0.26666644, 0.21333334)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerPaddle/Paddle1:scale")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 4.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(40.05, 31.95), Vector2(0.26666686, 0.21333334)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Ball/BallPong:scale")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 4.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(81.25, 81.25), Vector2(0.62499976, 0.62499976)]
+}
+
+[sub_resource type="Animation" id="Animation_quvn0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Phase1:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.6, 0.6)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EnnemiPaddle2/Paddle2:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.26666644, 0.21333334)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerPaddle/Paddle1:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.26666686, 0.21333334)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Ball/BallPong:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.62499976, 0.62499976)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_quvn0"]
+_data = {
+&"Entry": SubResource("Animation_takti"),
+&"RESET": SubResource("Animation_quvn0")
 }
 
 [node name="Pong" type="Node2D"]
@@ -79,26 +187,6 @@ texture = ExtResource("2_rgpvd")
 position = Vector2(392, 288)
 shape = SubResource("CapsuleShape2D_tbcxd")
 
-[node name="Ball" type="CharacterBody2D" parent="." node_paths=PackedStringArray("sound", "SpriteBall", "SpritePaddle1", "SpritePaddle2", "computer_text", "anim")]
-position = Vector2(576, 240)
-script = ExtResource("5_n5ync")
-sound = NodePath("../AudioStreamPlayer")
-SpriteBall = NodePath(".")
-SpritePaddle1 = NodePath("../PlayerPaddle")
-SpritePaddle2 = NodePath("../EnnemiPaddle2")
-computer_text = NodePath("../TextureRect/RichTextLabel")
-code_lines = "Game Over"
-anim = NodePath("../TextureRect/RichTextLabel/AnimationPlayer")
-
-[node name="BallPong" type="Sprite2D" parent="Ball"]
-position = Vector2(-3.000002, -4.000002)
-scale = Vector2(0.62499976, 0.62499976)
-texture = ExtResource("4_s25mq")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
-position = Vector2(-3, -4)
-shape = SubResource("CircleShape2D_cghwj")
-
 [node name="EnnemiPaddle2" type="CharacterBody2D" parent="." node_paths=PackedStringArray("ball")]
 position = Vector2(776, 320)
 script = ExtResource("7_en5gq")
@@ -112,6 +200,27 @@ texture = ExtResource("6_88wib")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnnemiPaddle2"]
 position = Vector2(-16, -24)
 shape = SubResource("CapsuleShape2D_sfkpr")
+
+[node name="Ball" type="CharacterBody2D" parent="." node_paths=PackedStringArray("sound", "SpriteBall", "SpritePaddle1", "SpritePaddle2", "computer_text", "anim", "gameover")]
+position = Vector2(576, 240)
+script = ExtResource("5_n5ync")
+sound = NodePath("../AudioStreamPlayer")
+SpriteBall = NodePath(".")
+SpritePaddle1 = NodePath("../PlayerPaddle")
+SpritePaddle2 = NodePath("../EnnemiPaddle2")
+computer_text = NodePath("../TextureRect/RichTextLabel")
+code_lines = "Game Over"
+anim = NodePath("../TextureRect/RichTextLabel/AnimationPlayer")
+gameover = NodePath("../TextureRect/RichTextLabel")
+
+[node name="BallPong" type="Sprite2D" parent="Ball"]
+position = Vector2(-3.000002, -4.000002)
+scale = Vector2(0.62499976, 0.62499976)
+texture = ExtResource("4_s25mq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
+position = Vector2(-3, -4)
+shape = SubResource("CircleShape2D_cghwj")
 
 [node name="BorderBounce" type="StaticBody2D" parent="."]
 
@@ -156,3 +265,11 @@ root_node = NodePath("../..")
 libraries = {
 &"": SubResource("AnimationLibrary_takti")
 }
+
+[node name="EntryAnim" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_quvn0")
+}
+autoplay = "Entry"
+
+[connection signal="animation_finished" from="EntryAnim" to="Ball" method="_on_entry_anim_animation_finished"]

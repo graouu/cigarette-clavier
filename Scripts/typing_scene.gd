@@ -19,6 +19,10 @@ var number_of_inputs : int = 0
 var done : bool = false
 
 func _ready() -> void:
+	if self==get_tree().current_scene:
+		transition.beginning()
+	else:
+		transition.self_modulate.a = 0
 	computer_text.text = ""
 
 func _input(event: InputEvent) -> void:

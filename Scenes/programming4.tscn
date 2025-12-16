@@ -108,7 +108,7 @@ shader_parameter/wave_frequency = 140.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_s4aox"]
 shader = ExtResource("8_hutyt")
-shader_parameter/pixelation = 0.00800000038
+shader_parameter/pixelation = 0.010000000475
 shader_parameter/opacity = 1.0
 
 [node name="Control2" type="Control" node_paths=PackedStringArray("computer_text", "compilation_button", "button_container", "sound", "transition")]
@@ -235,6 +235,7 @@ offset_right = 640.0
 offset_bottom = 248.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [connection signal="pressed" from="TextureRect/RichTextLabel/Run" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="TextureRect/RichTextLabel/ButtonContainer/leave" to="." method="_on_leave_pressed"]

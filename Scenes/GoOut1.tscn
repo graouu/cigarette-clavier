@@ -3,41 +3,64 @@
 [ext_resource type="Texture2D" uid="uid://bn8iuirk5vcxw" path="res://Images/eviromentado.png" id="1_3sl4o"]
 [ext_resource type="PackedScene" uid="uid://dr252hvw8htoy" path="res://Scenes/transition.tscn" id="1_fafgb"]
 [ext_resource type="Script" uid="uid://n64q54b6bbbv" path="res://character_body_2d.gd" id="2_3sl4o"]
-[ext_resource type="Texture2D" uid="uid://bmuc7fnbd6v00" path="res://Images/ZombiAnimation/ZombiMove9.png" id="3_ljujk"]
-[ext_resource type="Texture2D" uid="uid://cr3v3misew3e8" path="res://Images/ZombiAnimation/ZombiMove10.png" id="4_jhaq5"]
-[ext_resource type="Texture2D" uid="uid://dslgjpuv725ws" path="res://Images/ZombiAnimation/ZombiMove11.png" id="5_let5l"]
-[ext_resource type="Texture2D" uid="uid://c37tkhp7tntqa" path="res://Images/ZombiAnimation/ZombiMove12.png" id="6_fshcd"]
-[ext_resource type="Texture2D" uid="uid://dltf7wkyxf44g" path="res://Images/ZombiAnimation/ZombiMove13.png" id="7_8q3mp"]
-[ext_resource type="Texture2D" uid="uid://by0w6i7knwk3w" path="res://Images/ZombiAnimation/ZombiMove14.png" id="8_lyo8p"]
-[ext_resource type="Texture2D" uid="uid://caugsauxhiyn4" path="res://Images/ZombiAnimation/ZombiMove15.png" id="9_g7ce0"]
-[ext_resource type="Texture2D" uid="uid://c161o4lvbys4t" path="res://Images/ZombiAnimation/ZombiMove16.png" id="10_xtfs2"]
+[ext_resource type="Texture2D" uid="uid://dx7674qou8gjg" path="res://Images/AdoSheet.png" id="4_ur4u3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oifhs"]
+atlas = ExtResource("4_ur4u3")
+region = Rect2(408, 699, 408, 699)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ur4u3"]
+atlas = ExtResource("4_ur4u3")
+region = Rect2(0, 699, 408, 699)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_heunc"]
+atlas = ExtResource("4_ur4u3")
+region = Rect2(816, 699, 408, 699)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m6ksm"]
+atlas = ExtResource("4_ur4u3")
+region = Rect2(0, 0, 408, 699)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hkw8g"]
+atlas = ExtResource("4_ur4u3")
+region = Rect2(408, 0, 408, 699)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hwdye"]
+atlas = ExtResource("4_ur4u3")
+region = Rect2(816, 0, 408, 699)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8lc6h"]
+atlas = ExtResource("4_ur4u3")
+region = Rect2(1224, 0, 408, 699)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_r5xsm"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_ljujk")
+"texture": SubResource("AtlasTexture_oifhs")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_jhaq5")
+"texture": SubResource("AtlasTexture_ur4u3")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_let5l")
+"texture": SubResource("AtlasTexture_heunc")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m6ksm")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_fshcd")
+"texture": SubResource("AtlasTexture_hkw8g")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_8q3mp")
+"texture": SubResource("AtlasTexture_hwdye")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_lyo8p")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_g7ce0")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_xtfs2")
+"texture": SubResource("AtlasTexture_8lc6h")
 }],
 "loop": true,
 "name": &"Walking",
@@ -62,8 +85,8 @@ layout_mode = 3
 anchors_preset = 0
 offset_left = -2.0
 offset_top = -115.0
-offset_right = 639.0
-offset_bottom = 239.0
+offset_right = 643.0
+offset_bottom = 252.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -83,11 +106,12 @@ sound = NodePath("../AudioStreamPlayer")
 scene_id = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Character/CharacterBody2D"]
-position = Vector2(4, -49)
+position = Vector2(0, -80)
+scale = Vector2(0.235, 0.235)
 sprite_frames = SubResource("SpriteFrames_r5xsm")
-animation = &"Walking"
-autoplay = "Walking"
-frame_progress = 0.85165405
+animation = &"Idle"
+autoplay = "Idle"
+frame_progress = 0.6914095
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Character/CharacterBody2D"]
 position = Vector2(-1, -44)

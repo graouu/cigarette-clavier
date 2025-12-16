@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cr3v3misew3e8"
-path="res://.godot/imported/ZombiMove10.png-d89be47a5a613a22ceb0eba1236ff675.ctex"
+uid="uid://djty5cfeikh2d"
+path="res://.godot/imported/ado_cig_tire.png-5cf942b94204c4410c8400172aea9b17.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/ZombiAnimation/ZombiMove10.png"
-dest_files=["res://.godot/imported/ZombiMove10.png-d89be47a5a613a22ceb0eba1236ff675.ctex"]
+source_file="res://Images/ado_cig_tire.png"
+dest_files=["res://.godot/imported/ado_cig_tire.png-5cf942b94204c4410c8400172aea9b17.ctex"]
 
 [params]
 

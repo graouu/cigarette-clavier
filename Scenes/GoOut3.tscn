@@ -4,46 +4,69 @@
 [ext_resource type="Shader" uid="uid://dptoydrs4igu" path="res://Assets/pixel.gdshader" id="1_qe7k8"]
 [ext_resource type="PackedScene" uid="uid://dr252hvw8htoy" path="res://Scenes/transition.tscn" id="2_qe7k8"]
 [ext_resource type="Script" uid="uid://n64q54b6bbbv" path="res://character_body_2d.gd" id="3_44ioy"]
-[ext_resource type="Texture2D" uid="uid://bmuc7fnbd6v00" path="res://Images/ZombiAnimation/ZombiMove9.png" id="4_ogdgd"]
-[ext_resource type="Texture2D" uid="uid://cr3v3misew3e8" path="res://Images/ZombiAnimation/ZombiMove10.png" id="5_fy7d0"]
-[ext_resource type="Texture2D" uid="uid://dslgjpuv725ws" path="res://Images/ZombiAnimation/ZombiMove11.png" id="6_v7abe"]
-[ext_resource type="Texture2D" uid="uid://c37tkhp7tntqa" path="res://Images/ZombiAnimation/ZombiMove12.png" id="7_01jus"]
-[ext_resource type="Texture2D" uid="uid://dltf7wkyxf44g" path="res://Images/ZombiAnimation/ZombiMove13.png" id="8_k0fy7"]
-[ext_resource type="Texture2D" uid="uid://by0w6i7knwk3w" path="res://Images/ZombiAnimation/ZombiMove14.png" id="9_qumod"]
-[ext_resource type="Texture2D" uid="uid://caugsauxhiyn4" path="res://Images/ZombiAnimation/ZombiMove15.png" id="10_ljs3a"]
-[ext_resource type="Texture2D" uid="uid://c161o4lvbys4t" path="res://Images/ZombiAnimation/ZombiMove16.png" id="11_6gap5"]
+[ext_resource type="Texture2D" uid="uid://dilt15jpkxjdd" path="res://Images/AdultSheet.png" id="5_ui26a"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_44ioy"]
 shader = ExtResource("1_qe7k8")
-shader_parameter/pixelation = 0.006000000284999999
+shader_parameter/pixelation = 0.0090000004275
 shader_parameter/opacity = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5cdjb"]
+atlas = ExtResource("5_ui26a")
+region = Rect2(408, 699, 408, 699)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_62ody"]
+atlas = ExtResource("5_ui26a")
+region = Rect2(0, 699, 408, 699)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ig45m"]
+atlas = ExtResource("5_ui26a")
+region = Rect2(816, 699, 408, 699)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l1k7t"]
+atlas = ExtResource("5_ui26a")
+region = Rect2(0, 0, 408, 699)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vudwo"]
+atlas = ExtResource("5_ui26a")
+region = Rect2(408, 0, 408, 699)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p5leo"]
+atlas = ExtResource("5_ui26a")
+region = Rect2(816, 0, 408, 699)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qe7k8"]
+atlas = ExtResource("5_ui26a")
+region = Rect2(1224, 0, 408, 699)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_r5xsm"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_ogdgd")
+"texture": SubResource("AtlasTexture_5cdjb")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_fy7d0")
+"texture": SubResource("AtlasTexture_62ody")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_v7abe")
+"texture": SubResource("AtlasTexture_ig45m")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l1k7t")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_01jus")
+"texture": SubResource("AtlasTexture_vudwo")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_k0fy7")
+"texture": SubResource("AtlasTexture_p5leo")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_qumod")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_ljs3a")
-}, {
-"duration": 1.0,
-"texture": ExtResource("11_6gap5")
+"texture": SubResource("AtlasTexture_qe7k8")
 }],
 "loop": true,
 "name": &"Walking",
@@ -78,10 +101,10 @@ texture = ExtResource("1_p5leo")
 top_level = true
 layout_mode = 3
 anchors_preset = 0
-offset_left = -2.0
+offset_left = -6.0
 offset_top = -115.0
-offset_right = 639.0
-offset_bottom = 239.0
+offset_right = 647.0
+offset_bottom = 251.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -101,11 +124,11 @@ sound = NodePath("../AudioStreamPlayer")
 scene_id = 7
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Character/CharacterBody2D"]
-position = Vector2(4, -49)
+position = Vector2(1, -86)
+scale = Vector2(0.235, 0.235)
 sprite_frames = SubResource("SpriteFrames_r5xsm")
-animation = &"Walking"
-autoplay = "Walking"
-frame_progress = 0.85165405
+animation = &"Idle"
+autoplay = "Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Character/CharacterBody2D"]
 position = Vector2(-1, -44)

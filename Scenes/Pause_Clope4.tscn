@@ -1,9 +1,16 @@
-[gd_scene load_steps=12 format=3 uid="uid://dsn5g548xy8xf"]
+[gd_scene load_steps=24 format=3 uid="uid://dsn5g548xy8xf"]
 
 [ext_resource type="Script" uid="uid://c7amkvrcfg3h0" path="res://Scripts/pause_clope.gd" id="1_13wyb"]
 [ext_resource type="PackedScene" uid="uid://dr252hvw8htoy" path="res://Scenes/transition.tscn" id="2_ggqdw"]
 [ext_resource type="AudioStream" uid="uid://dyb8qfp1c5kmf" path="res://Assets/lighting.mp3" id="2_hb24h"]
 [ext_resource type="AudioStream" uid="uid://dbnaygdncenq4" path="res://Assets/exhale.mp3" id="3_ggqdw"]
+[ext_resource type="Shader" uid="uid://dptoydrs4igu" path="res://Assets/pixel.gdshader" id="4_ggqdw"]
+[ext_resource type="Texture2D" uid="uid://bphfpas5risf4" path="res://Images/ado_cig_low.png" id="4_pix50"]
+[ext_resource type="Shader" uid="uid://cexu075d0hqfn" path="res://Scenes/borderburn.gdshader" id="5_ab5g2"]
+[ext_resource type="Texture2D" uid="uid://djty5cfeikh2d" path="res://Images/ado_cig_tire.png" id="5_u3tj2"]
+[ext_resource type="Texture2D" uid="uid://7dy3k0a4ih2v" path="res://Images/ado_cig_idle.png" id="6_8pd2p"]
+[ext_resource type="Texture2D" uid="uid://cilbuwyrw0un4" path="res://Images/ado_cig_tire2.png" id="7_81no1"]
+[ext_resource type="Texture2D" uid="uid://6hswk41cgwx6" path="res://Images/ado_cig_cendre.png" id="8_xpwnf"]
 
 [sub_resource type="Animation" id="Animation_58k75"]
 resource_name = "Allumer_Cigarette"
@@ -53,7 +60,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_0j2yk"]
 resource_name = "Tirer_Cigarette"
-length = 2.871
+length = 3.5
 tracks/0/type = "audio"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -66,9 +73,24 @@ tracks/0/keys = {
 "start_offset": 0.0,
 "stream": ExtResource("3_ggqdw")
 }],
-"times": PackedFloat32Array(1.0333333)
+"times": PackedFloat32Array(1.6666666)
 }
 tracks/0/use_blend = true
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Lighting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 1.0692052,
+"stream": ExtResource("2_hb24h")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0vttn"]
 _data = {
@@ -76,6 +98,48 @@ _data = {
 &"RESET": SubResource("Animation_0vttn"),
 &"Tirer_Cigarette": SubResource("Animation_0j2yk")
 }
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_83v3f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_pix50")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_u3tj2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_8pd2p")
+}],
+"loop": false,
+"name": &"Allume",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_8pd2p")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_u3tj2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_81no1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_xpwnf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_8pd2p")
+}],
+"loop": false,
+"name": &"Tire",
+"speed": 1.0
+}]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_40dfy"]
 
@@ -90,18 +154,44 @@ corner_radius_bottom_left = 25
 ProgressBar/styles/background = SubResource("StyleBoxEmpty_40dfy")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_81fow")
 
-[node name="PauseClope" type="Node2D" node_paths=PackedStringArray("Animateur", "bar", "timer", "transition")]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_v8o2k"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_82uyf"]
+width = 200
+height = 1000
+noise = SubResource("FastNoiseLite_v8o2k")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lh243"]
+shader = ExtResource("5_ab5g2")
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_82uyf")
+shader_parameter/root_color = Color(0.99935025, 0.6548144, 0.40490782, 0.47058824)
+shader_parameter/tip_color = Color(0.91712135, 0.47608995, 0.95693153, 0.4745098)
+shader_parameter/poster_color = 11.402000541595
+shader_parameter/fire_alpha = 0.4400000209
+shader_parameter/fire_speed = Vector2(0, -0.1)
+shader_parameter/fire_aperture = 0.7950000377625
+shader_parameter/vignette_radius = 0.2390000113525
+shader_parameter/vignette_falloff = 0.23600001121
+shader_parameter/noise_influence = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ab5g2"]
+shader = ExtResource("4_ggqdw")
+shader_parameter/pixelation = 0.010000000475
+shader_parameter/opacity = 1.0
+
+[node name="PauseClope" type="Node2D" node_paths=PackedStringArray("Animateur", "bar", "timer", "transition", "pixelisation", "smoke", "sprite")]
 script = ExtResource("1_13wyb")
 Animateur = NodePath("Allumer_Clope")
 bar = NodePath("ProgressBar")
 timer = NodePath("Durée_pause")
 scene_id = 11
 transition = NodePath("Transition")
-
-[node name="Transition" parent="." instance=ExtResource("2_ggqdw")]
-visible = false
-offset_right = 1157.0
-offset_bottom = 652.0
+pixelisation = NodePath("Pixelisation")
+smoke = NodePath("Smoke")
+sprite = NodePath("AnimatedSprite2D")
+pixelisation_float = 0.01
+next_pixelation_float = 0.002
 
 [node name="Allumer_Clope" type="AnimationPlayer" parent="."]
 libraries = {
@@ -109,12 +199,19 @@ libraries = {
 }
 
 [node name="Durée_pause" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 30.0
 one_shot = true
 
 [node name="Lighting" type="AudioStreamPlayer2D" parent="."]
 
 [node name="Exhale" type="AudioStreamPlayer2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(585, 324.5)
+scale = Vector2(0.60625, 0.600926)
+sprite_frames = SubResource("SpriteFrames_83v3f")
+animation = &"Tire"
+autoplay = "Idle"
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 modulate = Color(1, 1, 1, 0)
@@ -130,5 +227,24 @@ theme = SubResource("Theme_hb24h")
 max_value = 30.0
 step = 0.1
 show_percentage = false
+
+[node name="Smoke" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_lh243")
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="Pixelisation" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_ab5g2")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1150.0
+offset_bottom = 648.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Transition" parent="." instance=ExtResource("2_ggqdw")]
+offset_right = 1157.0
+offset_bottom = 652.0
 
 [connection signal="timeout" from="Durée_pause" to="." method="_on_timer_timeout"]

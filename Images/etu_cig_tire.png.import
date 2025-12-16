@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://by0w6i7knwk3w"
-path="res://.godot/imported/ZombiMove14.png-ddb1dcaf21a16fcecf594ca57882867c.ctex"
+uid="uid://btlh01odmerfd"
+path="res://.godot/imported/etu_cig_tire.png-8f52fe7066aeeabcbfb46f6c9dc706b0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/ZombiAnimation/ZombiMove14.png"
-dest_files=["res://.godot/imported/ZombiMove14.png-ddb1dcaf21a16fcecf594ca57882867c.ctex"]
+source_file="res://Images/etu_cig_tire.png"
+dest_files=["res://.godot/imported/etu_cig_tire.png-8f52fe7066aeeabcbfb46f6c9dc706b0.ctex"]
 
 [params]
 

@@ -118,7 +118,7 @@ _data = {
 &"compiling": SubResource("Animation_xandg")
 }
 
-[node name="Control2" type="Control" node_paths=PackedStringArray("computer_text", "compilation_button", "button_container", "sound", "transition")]
+[node name="Control3" type="Control" node_paths=PackedStringArray("computer_text", "compilation_button", "button_container", "sound", "transition")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

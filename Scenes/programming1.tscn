@@ -1,8 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://1v5bdmpqq4wg"]
+[gd_scene load_steps=10 format=3 uid="uid://cki5amvxrr1ua"]
 
 [ext_resource type="Script" uid="uid://dkld1w71gheow" path="res://Scripts/typing_scene.gd" id="1_1in52"]
 [ext_resource type="Texture2D" uid="uid://da6c43qi7nr52" path="res://Images/phase1.png" id="2_wotmv"]
-[ext_resource type="Theme" uid="uid://cnrmgawvhwgx8" path="res://Assets/screen_font.tres" id="3_xhx8w"]
+[ext_resource type="Theme" path="res://Assets/screen_font.tres" id="3_xhx8w"]
 [ext_resource type="PackedScene" uid="uid://dr252hvw8htoy" path="res://Scenes/transition.tscn" id="4_jlj0h"]
 [ext_resource type="AudioStream" uid="uid://7j7xsjbxy2yd" path="res://Assets/typing.mp3" id="5_fjhg1"]
 [ext_resource type="AudioStream" uid="uid://cp8svob55iaj2" path="res://Assets/error.mp3" id="5_wotmv"]
@@ -118,7 +118,7 @@ _data = {
 &"compiling": SubResource("Animation_xandg")
 }
 
-[node name="Control" type="Control" node_paths=PackedStringArray("computer_text", "compilation_button", "button_container", "sound", "transition")]
+[node name="Control2" type="Control" node_paths=PackedStringArray("computer_text", "compilation_button", "button_container", "sound", "transition")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

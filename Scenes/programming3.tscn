@@ -97,7 +97,7 @@ _data = {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m7p4q"]
 shader = ExtResource("7_wa4xm")
-shader_parameter/pixelation = 0.00400000019
+shader_parameter/pixelation = 0.00800000038
 shader_parameter/opacity = 1.0
 
 [node name="Control2" type="Control" node_paths=PackedStringArray("computer_text", "compilation_button", "button_container", "sound", "transition")]
@@ -208,6 +208,7 @@ layout_mode = 1
 stream = ExtResource("5_jkm85")
 
 [node name="Pixelisation" type="ColorRect" parent="."]
+top_level = true
 material = SubResource("ShaderMaterial_m7p4q")
 layout_mode = 1
 anchors_preset = 15
@@ -215,6 +216,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [connection signal="pressed" from="TextureRect/RichTextLabel/Run" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="TextureRect/RichTextLabel/ButtonContainer/leave" to="." method="_on_leave_pressed"]

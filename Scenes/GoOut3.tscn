@@ -8,7 +8,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_44ioy"]
 shader = ExtResource("1_qe7k8")
-shader_parameter/pixelation = 0.00600000028499999
+shader_parameter/pixelation = 0.0090000004275
 shader_parameter/opacity = 1.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5cdjb"]

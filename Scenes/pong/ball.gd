@@ -10,6 +10,7 @@ const SPEED = 2
 @export var computer_text : RichTextLabel
 @export var code_lines : String
 @export var anim : AnimationPlayer
+@export var done : bool = false
 
 func _ready() -> void:
 	velocity = Vector2(-SPEED, -2)
@@ -23,7 +24,8 @@ func _physics_process(_delta: float) -> void:
 		velocity = velocity.bounce(normal)*1.1
 		sound.stream = SoundPong
 		sound.play()
-	if (global_position.x < 384 or global_position.x > 768):
+	if (global_position.x < 384 or global_position.x > 768) and done==false:
+		done = true
 		velocity = Vector2(0,0)
 		SpriteBall.hide()
 		SpritePaddle1.hide()

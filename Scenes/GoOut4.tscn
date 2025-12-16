@@ -8,7 +8,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6jsku"]
 shader = ExtResource("12_roxli")
-shader_parameter/pixelation = 0.00800000038
+shader_parameter/pixelation = 0.010000000475
 shader_parameter/opacity = 1.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l244r"]

@@ -1,5 +1,6 @@
 extends Node2D
 
+@export var transition : Transitor
 @export var text_titre : RichTextLabel
 @export var text_noms : RichTextLabel
 @export var code_lines1 : String
@@ -22,6 +23,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	transition.beginning()
 	code_lines1 = ""
 	code_lines2 = ""
 	code_lines3 = ""
@@ -48,4 +50,6 @@ func _ready() -> void:
 func _on_button_pressed() -> void:
 	sound.stream = SoundMousse
 	sound.play()
-	get_tree().change_scene_to_packed(game_resource.game_array[0])
+	transition.end()
+	await transition.end_done
+	get_tree().change_scene_to_packed(load("res://Scenes/mainmenu.tscn"))

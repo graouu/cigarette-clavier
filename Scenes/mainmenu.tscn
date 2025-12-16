@@ -94,10 +94,22 @@ tracks/6/keys = {
 "update": 0,
 "values": [0.00800000038]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../credits:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_rtnl3"]
 resource_name = "load"
-length = 2.2
+length = 2.3815
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -105,10 +117,10 @@ tracks/0/path = NodePath(".:text")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.36648262, 0.53314924, 0.6998159, 0.8564826, 0.98981595, 1.1333333, 1.2698159, 1.419816, 1.5564826),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.36648262, 0.53314924, 0.6998159, 0.8564826, 0.98981595, 1.1333333, 1.2698159, 1.5564826),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": ["", "Ci", "Ciga", "Cigare", "Cigarett", "Cigarette ", "Cigarette Cl", "Cigarette Clav", "Cigarette Clavie", "Cigarette Clavier."]
+"values": ["", "Ci", "Ciga", "Cigare", "Cigarett", "Cigarette ", "Cigarette Cl", "Cigarette Clav", "Cigarette Clavier."]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -141,10 +153,10 @@ tracks/3/path = NodePath("../../AudioStreamPlayer:playing")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.3231493, 0.53333336, 0.6945905, 0.8231493, 0.95648265, 1.0898159, 1.2564826, 1.389816, 1.5231493, 1.7516475, 2.0898159),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0.3231493, 0.53333336, 0.6945905, 0.8231493, 0.95648265, 1.0898159, 1.2564826, 1.389816, 1.5231493, 1.7516475, 2.0333333, 2.2666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [true, true, true, true, true, true, true, true, true, true, true]
+"values": [true, true, true, true, true, true, true, true, true, true, true, true]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -182,6 +194,18 @@ tracks/6/keys = {
 "update": 0,
 "values": [0.00800000038, 0.02000000095, 0.0010000000475]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../credits:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 2.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_v4pkt"]
 _data = {
@@ -194,7 +218,7 @@ shader = ExtResource("7_l2o7r")
 shader_parameter/pixelation = 0.00800000038
 shader_parameter/opacity = 1.0
 
-[node name="Control" type="Control" node_paths=PackedStringArray("start_button", "transition")]
+[node name="Control" type="Control" node_paths=PackedStringArray("start_button", "quit_button", "credits", "transition")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -203,6 +227,8 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_pposm")
 start_button = NodePath("ColorRect/start")
+quit_button = NodePath("ColorRect/quit")
+credits = NodePath("ColorRect/credits")
 transition = NodePath("Transition")
 
 [node name="ColorRect" type="TextureRect" parent="."]
@@ -247,12 +273,23 @@ size_flags_vertical = 4
 theme = ExtResource("2_rtnl3")
 text = "Start Game"
 
+[node name="credits" type="Button" parent="ColorRect"]
+layout_mode = 0
+offset_left = 517.0
+offset_top = 378.0
+offset_right = 637.0
+offset_bottom = 404.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("2_rtnl3")
+text = "Credits"
+
 [node name="quit" type="Button" parent="ColorRect"]
 layout_mode = 0
-offset_left = 516.0
-offset_top = 375.0
-offset_right = 636.0
-offset_bottom = 401.0
+offset_left = 514.0
+offset_top = 425.0
+offset_right = 634.0
+offset_bottom = 451.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = ExtResource("2_rtnl3")
@@ -299,4 +336,5 @@ grow_vertical = 2
 mouse_filter = 2
 
 [connection signal="pressed" from="ColorRect/start" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="ColorRect/credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="ColorRect/quit" to="." method="_on_button_quit_pressed"]

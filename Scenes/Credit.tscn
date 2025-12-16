@@ -2,23 +2,8 @@
 
 [ext_resource type="Script" uid="uid://djaf578sknrjd" path="res://Scenes/credit.gd" id="1_m0dbt"]
 [ext_resource type="Texture2D" uid="uid://cu07hhxow305k" path="res://Images/phase3.png" id="1_wxpvu"]
-[ext_resource type="Theme" path="res://Assets/screen_font.tres" id="2_xpddk"]
+[ext_resource type="Theme" uid="uid://cnrmgawvhwgx8" path="res://Assets/screen_font.tres" id="2_xpddk"]
 [ext_resource type="PackedScene" uid="uid://dr252hvw8htoy" path="res://Scenes/transition.tscn" id="4_7gwq5"]
-
-[sub_resource type="Animation" id="Animation_m0dbt"]
-resource_name = "titreG"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:text")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.3, 0.96666664),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": ["Graphismes:", "Graphismes:"]
-}
 
 [sub_resource type="Animation" id="Animation_7gwq5"]
 length = 0.001
@@ -35,10 +20,64 @@ tracks/0/keys = {
 "values": [""]
 }
 
+[sub_resource type="Animation" id="Animation_m0dbt"]
+resource_name = "titreG"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.3, 0.96666664),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": ["Graphismes:", "Graphismes:"]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7gwq5"]
 _data = {
 &"RESET": SubResource("Animation_7gwq5"),
 &"titreG": SubResource("Animation_m0dbt")
+}
+
+[sub_resource type="Animation" id="Animation_7snrw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [""]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../AudioStreamPlayer:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../AudioStreamPlayer:pitch_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
 }
 
 [sub_resource type="Animation" id="Animation_wwm1b"]
@@ -81,7 +120,53 @@ tracks/2/keys = {
 "values": [0.11, 0.11, 0.95, 0.95, 1.0, 1.1, 1.0, 0.95, 1.05, 1.0]
 }
 
-[sub_resource type="Animation" id="Animation_7snrw"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7snrw"]
+_data = {
+&"RESET": SubResource("Animation_7snrw"),
+&"nomsG": SubResource("Animation_wwm1b")
+}
+
+[sub_resource type="Animation" id="Animation_8nixa"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [""]
+}
+
+[sub_resource type="Animation" id="Animation_5uhh1"]
+resource_name = "new_animation"
+
+[sub_resource type="Animation" id="Animation_fnwtp"]
+resource_name = "titreP"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": ["Programmation:", "Programmation:"]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8nixa"]
+_data = {
+&"RESET": SubResource("Animation_8nixa"),
+&"new_animation": SubResource("Animation_5uhh1"),
+&"titreP": SubResource("Animation_fnwtp")
+}
+
+[sub_resource type="Animation" id="Animation_sru42"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -117,53 +202,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [1.0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_7snrw"]
-_data = {
-&"RESET": SubResource("Animation_7snrw"),
-&"nomsG": SubResource("Animation_wwm1b")
-}
-
-[sub_resource type="Animation" id="Animation_5uhh1"]
-resource_name = "new_animation"
-
-[sub_resource type="Animation" id="Animation_fnwtp"]
-resource_name = "titreP"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:text")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": ["Programmation:", "Programmation:"]
-}
-
-[sub_resource type="Animation" id="Animation_8nixa"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:text")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [""]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_8nixa"]
-_data = {
-&"RESET": SubResource("Animation_8nixa"),
-&"new_animation": SubResource("Animation_5uhh1"),
-&"titreP": SubResource("Animation_fnwtp")
+"values": [0.11]
 }
 
 [sub_resource type="Animation" id="Animation_otqie"]
@@ -206,64 +245,10 @@ tracks/2/keys = {
 "values": [1.0, 1.1, 0.9, 1.0, 1.1, 1.0, 1.1, 1.0, 0.9, 1.1, 1.0, 1.1, 0.9, 1.0, 1.1, 1.0, 1.1, 0.9, 1.0, 1.1, 1.0]
 }
 
-[sub_resource type="Animation" id="Animation_sru42"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:text")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [""]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../../AudioStreamPlayer:playing")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../../AudioStreamPlayer:pitch_scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.11]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_sru42"]
 _data = {
 &"RESET": SubResource("Animation_sru42"),
 &"nomsP": SubResource("Animation_otqie")
-}
-
-[sub_resource type="Animation" id="Animation_s5ocw"]
-resource_name = "titreM"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:text")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": ["Musique:", "Musique:"]
 }
 
 [sub_resource type="Animation" id="Animation_wv6ro"]
@@ -281,14 +266,8 @@ tracks/0/keys = {
 "values": [""]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_wv6ro"]
-_data = {
-&"RESET": SubResource("Animation_wv6ro"),
-&"titreM": SubResource("Animation_s5ocw")
-}
-
-[sub_resource type="Animation" id="Animation_10mb3"]
-resource_name = "nomsM"
+[sub_resource type="Animation" id="Animation_s5ocw"]
+resource_name = "titreM"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -296,34 +275,16 @@ tracks/0/path = NodePath(".:text")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.16666667, 0.33333334, 0.5, 0.73333335),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": ["E", "El", "Ely", "Elya", "Elyas"]
+"values": ["Musique:", "Musique:"]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../../AudioStreamPlayer:playing")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.16666667, 0.33333334, 0.5, 0.73333335),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [true, true, true, true, true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../../AudioStreamPlayer:pitch_scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.16666667, 0.3, 0.5, 0.73333335),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [1.0, 0.9, 1.0, 1.1, 1.0]
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wv6ro"]
+_data = {
+&"RESET": SubResource("Animation_wv6ro"),
+&"titreM": SubResource("Animation_s5ocw")
 }
 
 [sub_resource type="Animation" id="Animation_umv24"]
@@ -365,14 +326,54 @@ tracks/2/keys = {
 "values": [1.0]
 }
 
+[sub_resource type="Animation" id="Animation_10mb3"]
+resource_name = "nomsM"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.33333334, 0.5, 0.73333335),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": ["E", "El", "Ely", "Elya", "Elyas"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../AudioStreamPlayer:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.33333334, 0.5, 0.73333335),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, true, true, true, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../AudioStreamPlayer:pitch_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.3, 0.5, 0.73333335),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 0.9, 1.0, 1.1, 1.0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_umv24"]
 _data = {
 &"RESET": SubResource("Animation_umv24"),
 &"nomsM": SubResource("Animation_10mb3")
 }
 
-[node name="Credit" type="Node2D" node_paths=PackedStringArray("text_titre", "text_noms", "animG", "animGn", "animP", "animPn", "animM", "animMn", "button", "sound")]
+[node name="Credit" type="Node2D" node_paths=PackedStringArray("transition", "text_titre", "text_noms", "animG", "animGn", "animP", "animPn", "animM", "animMn", "button", "sound")]
 script = ExtResource("1_m0dbt")
+transition = NodePath("Transition")
 text_titre = NodePath("TextureRect/Graphisme")
 text_noms = NodePath("TextureRect/nomsG")
 code_lines1 = "Graphism"

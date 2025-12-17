@@ -1,14 +1,14 @@
-[gd_scene load_steps=27 format=3 uid="uid://g5f4k1giivdi"]
+[gd_scene load_steps=27 format=3 uid="uid://bnpkhyc0wdmu5"]
 
 [ext_resource type="Script" uid="uid://dkld1w71gheow" path="res://Scripts/typing_scene.gd" id="1_qm8nt"]
 [ext_resource type="Texture2D" uid="uid://gjyobda7idnt" path="res://Images/phase4.png" id="2_15q2a"]
-[ext_resource type="Theme" uid="uid://cnrmgawvhwgx8" path="res://Assets/screen_font.tres" id="3_8534v"]
-[ext_resource type="Shader" uid="uid://4rekmlv0x6x7" path="res://Assets/curvedshader.gdshader" id="3_hutyt"]
+[ext_resource type="Theme" path="res://Assets/screen_font.tres" id="3_8534v"]
+[ext_resource type="Shader" path="res://Assets/curvedshader.gdshader" id="3_hutyt"]
 [ext_resource type="PackedScene" uid="uid://dr252hvw8htoy" path="res://Scenes/transition.tscn" id="4_hutyt"]
 [ext_resource type="AudioStream" uid="uid://7j7xsjbxy2yd" path="res://Assets/typing.mp3" id="5_egsap"]
 [ext_resource type="AudioStream" uid="uid://cp8svob55iaj2" path="res://Assets/error.mp3" id="6_8534v"]
 [ext_resource type="Texture2D" uid="uid://plnkhklbk1bw" path="res://Images/hands.png" id="7_egsap"]
-[ext_resource type="Shader" uid="uid://dptoydrs4igu" path="res://Assets/pixel.gdshader" id="8_hutyt"]
+[ext_resource type="Shader" path="res://Assets/pixel.gdshader" id="8_hutyt"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_egsap"]
 shader = ExtResource("3_hutyt")
@@ -239,7 +239,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_qm8nt")
 computer_text = NodePath("TextureRect/RichTextLabel")
-code_lines = "[b[br]    return group_info; [br] [br] [br]out_undo_partial_alloc: [br] [br]    while (--i >= 0) { [br] [br]        free_page((unsigned long)group_info->blocks[i]); [br] [br]    } [br] [br]    kfree(group_info); [br] [br]    return NULL; [br] [br]} [br] [br] [br] [br]EXPORT_SYMBOL(groups_alloc); [br] [br] [br] [br]void groups_free(struct group_info *group_info) [br] [br]{ [br] [br]    if (group_info->blocks[0] != group_info->small_block) { [br] [br]        int i; [br] [br]        for (i = 0; i < group_info->nblocks; i++) [br] [br][br]struct group_info init_groups = { .usage = ATOMIC_INIT(2) }; [br] [br]struct group_info *groups_alloc(int gidsetsize){ [br]    struct group_info *group_info; [br]    int nblocks; [br]    int i; [br] [br] [br]    nblocks = (gidsetsize + NGROUPS_PER_BLOCK - 1) / NGROUPS_PER_BLOCK; [br]    "
+code_lines = "extends CharacterBody2D[br][br]@onready var game_resource : GameResource = load(\"res://Assets/GameScenes.tres\")[br]const SPEED = 2[br]@export var sound : AudioStreamPlayer[br]@onready var SoundPong : AudioStream = preload(\"res://Assets/PongSound.mp3\")[br]@export var SpriteBall : CharacterBody2D@export var SpritePaddle1 : CharacterBody2D[br]@export var SpritePaddle2 : CharacterBody2D[br]@export var computer_text : RichTextLabel[br]@export var code_lines : String[br]@export var anim : AnimationPlayer[br]@export var gameover : RichTextLabel[br]var done : bool = false[br]var intro_done : bool = false[br][br]func _ready() -> void:[br]velocity = Vector2(-SPEED, -2)[br]computer_text.text = \"\"[br]func _physics_process(_delta: float) -> void:[br]if intro_done:[br]var col := move_and_collide(velocity)[br]if col:[br]var normal := col.get_normal()[br]sound.pitch_scale = randf_range(0.9,1.1)[br]velocity = velocity.bounce(normal)*1.1[br]sound.stream = SoundPong[br]sound.play()[br]if (global_position.x < 384 or global_position.x > 768) and done==false:[br]done = true[br]velocity = Vector2(0,0)[br]SpriteBall.hide()[br]SpritePaddle1.hide()[br]SpritePaddle2.hide()[br]anim.play(\"load\")[br]await get_tree().create_timer(5).timeout[br]gameover.hide()[br]var first_level =[br]preload(\"res://Scenes/programming1.tscn\").instantiate()[br]get_tree().root.add_child(first_level)[br][br][br][br]func _on_entry_anim_animation_finished(_anim_name: StringName) -> void:[br]intro_done = true"
 compilation_button = NodePath("TextureRect/RichTextLabel/Run")
 button_container = NodePath("TextureRect/RichTextLabel/ButtonContainer")
 sound = NodePath("AudioStreamPlayer")

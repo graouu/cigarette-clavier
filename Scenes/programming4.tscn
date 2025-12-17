@@ -165,33 +165,6 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="Animation" id="Animation_xhx8w"]
-resource_name = "intro"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(260.85, 722.66), Vector2(260.85, 539.70624)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D2:position")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(656, 722.66), Vector2(656.00006, 541)]
-}
-
 [sub_resource type="Animation" id="Animation_jlj0h"]
 length = 0.001
 tracks/0/type = "value"
@@ -217,6 +190,33 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(656.00006, 541)]
+}
+
+[sub_resource type="Animation" id="Animation_xhx8w"]
+resource_name = "intro"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(260.85, 722.66), Vector2(260.85, 539.70624)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D2:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(656, 722.66), Vector2(656.00006, 541)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fjhg1"]
@@ -286,7 +286,6 @@ libraries = {
 }
 
 [node name="Run" type="Button" parent="TextureRect/RichTextLabel"]
-visible = false
 top_level = true
 layout_mode = 1
 anchors_preset = 3
@@ -294,10 +293,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -279.99994
-offset_top = -320.0
-offset_right = -236.99994
-offset_bottom = -289.0
+offset_left = -291.99994
+offset_top = -346.0
+offset_right = -211.99994
+offset_bottom = -286.0
 grow_horizontal = 0
 grow_vertical = 0
 rotation = 0.17453292
@@ -318,10 +317,10 @@ grow_vertical = 0
 [node name="leave" type="Button" parent="TextureRect/RichTextLabel/ButtonContainer"]
 top_level = true
 layout_mode = 0
-offset_left = 695.00006
-offset_top = 301.00003
-offset_right = 755.00006
-offset_bottom = 332.00003
+offset_left = 665.00006
+offset_top = 282.0
+offset_right = 785.00006
+offset_bottom = 342.0
 rotation = 0.08726646
 theme = ExtResource("3_8534v")
 text = "leave"
@@ -330,10 +329,10 @@ text = "leave"
 top_level = true
 material = SubResource("ShaderMaterial_15q2a")
 layout_mode = 0
-offset_left = 439.00003
-offset_top = 309.0
-offset_right = 571.00006
-offset_bottom = 340.0
+offset_left = 383.0
+offset_top = 296.00003
+offset_right = 583.0
+offset_bottom = 356.00003
 rotation = 0.10471976
 theme = ExtResource("3_8534v")
 text = "keep trying"

@@ -154,33 +154,6 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="Animation" id="Animation_xhx8w"]
-resource_name = "intro"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(260.85, 722.66), Vector2(260.85, 539.70624)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D2:position")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(656, 722.66), Vector2(656.00006, 541)]
-}
-
 [sub_resource type="Animation" id="Animation_jlj0h"]
 length = 0.001
 tracks/0/type = "value"
@@ -206,6 +179,33 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(656.00006, 541)]
+}
+
+[sub_resource type="Animation" id="Animation_xhx8w"]
+resource_name = "intro"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(260.85, 722.66), Vector2(260.85, 539.70624)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D2:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(656, 722.66), Vector2(656.00006, 541)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fjhg1"]
@@ -282,10 +282,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -337.0
-offset_top = -348.0
-offset_right = -294.0
-offset_bottom = -317.0
+offset_left = -372.0
+offset_top = -368.0
+offset_right = -292.0
+offset_bottom = -308.0
 grow_horizontal = 0
 grow_vertical = 0
 theme = ExtResource("3_wa4xm")
@@ -305,20 +305,20 @@ grow_vertical = 0
 [node name="leave" type="Button" parent="TextureRect/RichTextLabel/ButtonContainer"]
 top_level = true
 layout_mode = 0
-offset_left = 630.00006
-offset_top = 314.0
-offset_right = 690.00006
-offset_bottom = 345.0
+offset_left = 594.0
+offset_top = 290.0
+offset_right = 714.0
+offset_bottom = 350.0
 theme = ExtResource("3_wa4xm")
 text = "leave"
 
 [node name="keep" type="Button" parent="TextureRect/RichTextLabel/ButtonContainer"]
 top_level = true
 layout_mode = 0
-offset_left = 400.0
-offset_top = 316.0
-offset_right = 532.0
-offset_bottom = 347.0
+offset_left = 377.0
+offset_top = 294.0
+offset_right = 577.0
+offset_bottom = 354.0
 theme = ExtResource("3_wa4xm")
 text = "keep trying"
 

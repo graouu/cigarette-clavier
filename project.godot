@@ -22,6 +22,7 @@ SoundManager="*res://Assets/sound_manager.tscn"
 [display]
 
 window/size/resizable=false
+window/stretch/mode="viewport"
 
 [input]
 

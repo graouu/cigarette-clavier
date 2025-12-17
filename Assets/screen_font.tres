@@ -14,7 +14,7 @@
 Button/colors/font_color = Color(0.31764707, 0.16862746, 0.34509805, 1)
 Button/colors/font_outline_color = Color(1, 0.68235296, 0.6313726, 1)
 Button/constants/outline_size = 13
-Button/font_sizes/font_size = 20
+Button/font_sizes/font_size = 25
 Button/fonts/font = ExtResource("1_mhgqw")
 Button/styles/focus = SubResource("StyleBoxEmpty_mhgqw")
 Button/styles/hover = SubResource("StyleBoxEmpty_ebmiq")

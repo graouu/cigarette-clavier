@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cki5amvxrr1ua"]
+[gd_scene load_steps=30 format=3 uid="uid://cki5amvxrr1ua"]
 
 [ext_resource type="Script" uid="uid://dkld1w71gheow" path="res://Scripts/typing_scene.gd" id="1_1in52"]
 [ext_resource type="Texture2D" uid="uid://da6c43qi7nr52" path="res://Images/phase1.png" id="2_wotmv"]
@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://7j7xsjbxy2yd" path="res://Assets/typing.mp3" id="5_fjhg1"]
 [ext_resource type="AudioStream" uid="uid://cp8svob55iaj2" path="res://Assets/error.mp3" id="5_wotmv"]
 [ext_resource type="Texture2D" uid="uid://plnkhklbk1bw" path="res://Images/hands.png" id="6_xhx8w"]
+[ext_resource type="Texture2D" uid="uid://budj2hh3l044g" path="res://Images/SpriteClavier.png" id="8_jlj0h"]
 
 [sub_resource type="Animation" id="Animation_dn4f4"]
 length = 0.001
@@ -177,67 +178,78 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="Animation" id="Animation_jlj0h"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(260.85, 539.70624)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D2:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(656.00006, 541)]
-}
+[sub_resource type="AtlasTexture" id="AtlasTexture_vnd18"]
+atlas = ExtResource("8_jlj0h")
+region = Rect2(0, 0, 818, 225)
 
-[sub_resource type="Animation" id="Animation_xhx8w"]
-resource_name = "intro"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(260.85, 722.66), Vector2(260.85, 539.70624)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D2:position")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(656, 722.66), Vector2(656.00006, 541)]
-}
+[sub_resource type="AtlasTexture" id="AtlasTexture_nl4ah"]
+atlas = ExtResource("8_jlj0h")
+region = Rect2(818, 0, 818, 225)
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_fjhg1"]
-_data = {
-&"RESET": SubResource("Animation_jlj0h"),
-&"intro": SubResource("Animation_xhx8w")
-}
+[sub_resource type="AtlasTexture" id="AtlasTexture_g2i8o"]
+atlas = ExtResource("8_jlj0h")
+region = Rect2(1636, 0, 818, 225)
 
-[node name="Control3" type="Control" node_paths=PackedStringArray("computer_text", "compilation_button", "button_container", "sound", "transition", "hand1", "hand2")]
+[sub_resource type="AtlasTexture" id="AtlasTexture_75oxu"]
+atlas = ExtResource("8_jlj0h")
+region = Rect2(2454, 0, 818, 225)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hbks3"]
+atlas = ExtResource("8_jlj0h")
+region = Rect2(3272, 0, 818, 225)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rdv62"]
+atlas = ExtResource("8_jlj0h")
+region = Rect2(4090, 0, 818, 225)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_03bt2"]
+atlas = ExtResource("8_jlj0h")
+region = Rect2(4908, 0, 818, 225)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yoy28"]
+atlas = ExtResource("8_jlj0h")
+region = Rect2(5726, 0, 818, 225)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hq0m5"]
+atlas = ExtResource("8_jlj0h")
+region = Rect2(6544, 0, 818, 225)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_edkt5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vnd18")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nl4ah")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g2i8o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_75oxu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hbks3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rdv62")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_03bt2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yoy28")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hq0m5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Control3" type="Control" node_paths=PackedStringArray("computer_text", "compilation_button", "button_container", "sound", "transition", "hand1", "hand2", "keyboard")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -253,6 +265,7 @@ sound = NodePath("AudioStreamPlayer")
 transition = NodePath("Transition")
 hand1 = NodePath("AnimatedSprite2D")
 hand2 = NodePath("AnimatedSprite2D2")
+keyboard = NodePath("AnimatedSprite2D3")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -299,10 +312,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -419.0
-offset_top = -306.0
-offset_right = -376.0
-offset_bottom = -275.0
+offset_left = -447.0
+offset_top = -324.0
+offset_right = -367.0
+offset_bottom = -264.0
 grow_horizontal = 0
 grow_vertical = 0
 theme = ExtResource("3_xhx8w")
@@ -322,10 +335,10 @@ grow_vertical = 0
 [node name="leave" type="Button" parent="TextureRect/RichTextLabel/ButtonContainer"]
 top_level = true
 layout_mode = 0
-offset_left = 642.00006
-offset_top = 345.0
-offset_right = 702.00006
-offset_bottom = 376.0
+offset_left = 621.0
+offset_top = 330.00003
+offset_right = 721.0
+offset_bottom = 390.00003
 rotation = 0.034906585
 theme = ExtResource("3_xhx8w")
 text = "leave"
@@ -333,10 +346,10 @@ text = "leave"
 [node name="keep" type="Button" parent="TextureRect/RichTextLabel/ButtonContainer"]
 top_level = true
 layout_mode = 0
-offset_left = 422.00003
-offset_top = 338.0
-offset_right = 554.0
-offset_bottom = 369.0
+offset_left = 405.99997
+offset_top = 321.99997
+offset_right = 605.99994
+offset_bottom = 381.99997
 rotation = 0.034906585
 theme = ExtResource("3_xhx8w")
 text = "keep trying"
@@ -345,24 +358,27 @@ text = "keep trying"
 stream = ExtResource("5_fjhg1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(260.85, 539.70624)
 scale = Vector2(0.34717742, 0.38616782)
 sprite_frames = SubResource("SpriteFrames_xhx8w")
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(656.00006, 541)
 scale = Vector2(0.34717742, 0.38616782)
 sprite_frames = SubResource("SpriteFrames_jlj0h")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_fjhg1")
-}
-autoplay = "intro"
-
 [node name="Transition" parent="." instance=ExtResource("4_jlj0h")]
 visible = false
 layout_mode = 1
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="."]
+position = Vector2(504, 536.5)
+sprite_frames = SubResource("SpriteFrames_edkt5")
+autoplay = "default"
+frame = 1
+frame_progress = 0.42766982
 
 [connection signal="pressed" from="TextureRect/RichTextLabel/Run" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="TextureRect/RichTextLabel/ButtonContainer/leave" to="." method="_on_leave_pressed"]

@@ -282,10 +282,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -362.0
-offset_top = -261.0
-offset_right = -319.0
-offset_bottom = -230.0
+offset_left = -386.0
+offset_top = -288.0
+offset_right = -306.0
+offset_bottom = -228.0
 grow_horizontal = 0
 grow_vertical = 0
 theme = ExtResource("3_ra1jg")
@@ -305,20 +305,20 @@ grow_vertical = 0
 [node name="leave" type="Button" parent="TextureRect/RichTextLabel/ButtonContainer"]
 top_level = true
 layout_mode = 0
-offset_left = 652.0
-offset_top = 389.0
-offset_right = 712.0
-offset_bottom = 420.0
+offset_left = 629.0
+offset_top = 364.0
+offset_right = 749.0
+offset_bottom = 424.0
 theme = ExtResource("3_ra1jg")
 text = "leave"
 
 [node name="keep" type="Button" parent="TextureRect/RichTextLabel/ButtonContainer"]
 top_level = true
 layout_mode = 0
-offset_left = 408.0
-offset_top = 385.0
-offset_right = 540.0
-offset_bottom = 416.0
+offset_left = 371.00003
+offset_top = 359.00003
+offset_right = 571.0
+offset_bottom = 419.00003
 rotation = 0.017453292
 theme = ExtResource("3_ra1jg")
 text = "keep trying"
@@ -343,6 +343,7 @@ libraries = {
 autoplay = "intro"
 
 [node name="Pixelisation" type="ColorRect" parent="."]
+visible = false
 top_level = true
 material = SubResource("ShaderMaterial_id6jy")
 layout_mode = 1

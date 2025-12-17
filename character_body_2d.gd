@@ -42,9 +42,13 @@ func _physics_process(delta: float) -> void:
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction := Input.get_axis("ui_left", "ui_right")
+	var direction : int
+	if Input.is_anything_pressed():
+		direction = 1
+	else:
+		direction = 0
 	if direction:
-		velocity.x = abs(direction * SPEED)
+		velocity.x = direction * SPEED
 		animated_sprite_2d.play("Walking")
 		# Walking sound
 		if SoundStepPlaying == false:

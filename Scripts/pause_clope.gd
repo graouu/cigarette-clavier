@@ -27,7 +27,7 @@ func _process(_delta: float) -> void:
 	bar.value = timer.time_left
 
 func _input(event): 
-	if event.is_action_pressed("allumer") and !Animateur.is_playing():
+	if event is not InputEventMouseMotion and !Animateur.is_playing():
 		if cigarette_allumé:
 			Animateur.play("Tirer_Cigarette")
 			sprite.play("Tire")

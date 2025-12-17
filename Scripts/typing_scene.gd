@@ -9,6 +9,7 @@ extends Control
 @export var scene_id : int
 @export var hand1 : AnimatedSprite2D
 @export var hand2 : AnimatedSprite2D
+@export var keyboard : AnimatedSprite2D
 
 
 
@@ -20,6 +21,7 @@ extends Control
 
 var number_of_inputs : int = 0
 var done : bool = false
+var started : bool = false
 
 func _ready() -> void:
 	if self==get_tree().current_scene:
@@ -30,6 +32,11 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event is not InputEventMouseMotion and event.is_pressed() and !done:
+		if !started:
+			hand1.show()
+			hand2.show()
+			keyboard.hide()
+			started = true
 		hand1.play()
 		hand2.play()
 		number_of_inputs+=5

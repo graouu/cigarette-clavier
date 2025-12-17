@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" uid="uid://dkld1w71gheow" path="res://Scripts/typing_scene.gd" id="1_406ts"]
 [ext_resource type="Texture2D" uid="uid://1s3kun1jrpu6" path="res://Images/phase2.png" id="2_406ts"]
-[ext_resource type="Theme" path="res://Assets/screen_font.tres" id="3_ra1jg"]
+[ext_resource type="Theme" uid="uid://cnrmgawvhwgx8" path="res://Assets/screen_font.tres" id="3_ra1jg"]
 [ext_resource type="PackedScene" uid="uid://dr252hvw8htoy" path="res://Scenes/transition.tscn" id="4_id6jy"]
 [ext_resource type="AudioStream" uid="uid://cp8svob55iaj2" path="res://Assets/error.mp3" id="5_frat6"]
 [ext_resource type="AudioStream" uid="uid://7j7xsjbxy2yd" path="res://Assets/typing.mp3" id="5_qtqph"]
 [ext_resource type="Texture2D" uid="uid://plnkhklbk1bw" path="res://Images/hands.png" id="6_id6jy"]
-[ext_resource type="Shader" path="res://Assets/pixel.gdshader" id="7_ra1jg"]
+[ext_resource type="Shader" uid="uid://dptoydrs4igu" path="res://Assets/pixel.gdshader" id="7_ra1jg"]
 
 [sub_resource type="Animation" id="Animation_dn4f4"]
 length = 0.001
@@ -343,7 +343,6 @@ libraries = {
 autoplay = "intro"
 
 [node name="Pixelisation" type="ColorRect" parent="."]
-visible = false
 top_level = true
 material = SubResource("ShaderMaterial_id6jy")
 layout_mode = 1

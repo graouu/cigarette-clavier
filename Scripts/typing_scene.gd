@@ -35,7 +35,8 @@ func _input(event: InputEvent) -> void:
 		if !started:
 			hand1.show()
 			hand2.show()
-			keyboard.hide()
+			if keyboard:
+				keyboard.hide()
 			started = true
 		hand1.play()
 		hand2.play()

@@ -1,8 +1,9 @@
-[gd_scene load_steps=25 format=3 uid="uid://piell13gmkqt"]
+[gd_scene load_steps=26 format=3 uid="uid://piell13gmkqt"]
 
 [ext_resource type="Script" uid="uid://c7amkvrcfg3h0" path="res://Scripts/pause_clope.gd" id="1_kmovn"]
 [ext_resource type="AudioStream" uid="uid://dyb8qfp1c5kmf" path="res://Assets/lighting.mp3" id="2_40dfy"]
 [ext_resource type="AudioStream" uid="uid://dbnaygdncenq4" path="res://Assets/exhale.mp3" id="3_ul0gq"]
+[ext_resource type="AudioStream" uid="uid://cllridmc5kpu4" path="res://Assets/cough.mp3" id="4_8ywh0"]
 [ext_resource type="Texture2D" uid="uid://2drvvnrxjwmj" path="res://Images/etu_cig_allume.png" id="4_33qdx"]
 [ext_resource type="PackedScene" uid="uid://dr252hvw8htoy" path="res://Scenes/transition.tscn" id="4_40dfy"]
 [ext_resource type="Texture2D" uid="uid://btlh01odmerfd" path="res://Images/etu_cig_tire.png" id="5_8ywh0"]
@@ -61,7 +62,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_0j2yk"]
 resource_name = "Tirer_Cigarette"
-length = 3.5
+length = 3.674
 tracks/0/type = "audio"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -73,10 +74,14 @@ tracks/0/keys = {
 "end_offset": 0.0,
 "start_offset": 0.0,
 "stream": ExtResource("3_ul0gq")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_8ywh0")
 }],
-"times": PackedFloat32Array(1.6666666)
+"times": PackedFloat32Array(1.3, 2.4)
 }
-tracks/0/use_blend = true
+tracks/0/use_blend = false
 tracks/1/type = "audio"
 tracks/1/imported = false
 tracks/1/enabled = true
@@ -236,6 +241,7 @@ animation = &"Tire"
 autoplay = "Idle"
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
+visible = false
 modulate = Color(1, 1, 1, 0)
 anchors_preset = 5
 anchor_left = 0.5

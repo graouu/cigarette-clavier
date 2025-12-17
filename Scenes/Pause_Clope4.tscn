@@ -1,16 +1,19 @@
-[gd_scene load_steps=24 format=3 uid="uid://dsn5g548xy8xf"]
+[gd_scene load_steps=27 format=3 uid="uid://dsn5g548xy8xf"]
 
 [ext_resource type="Script" uid="uid://c7amkvrcfg3h0" path="res://Scripts/pause_clope.gd" id="1_13wyb"]
+[ext_resource type="AudioStream" uid="uid://cil0pjtxl64v6" path="res://Assets/match.mp3" id="2_81no1"]
 [ext_resource type="PackedScene" uid="uid://dr252hvw8htoy" path="res://Scenes/transition.tscn" id="2_ggqdw"]
 [ext_resource type="AudioStream" uid="uid://dyb8qfp1c5kmf" path="res://Assets/lighting.mp3" id="2_hb24h"]
 [ext_resource type="AudioStream" uid="uid://dbnaygdncenq4" path="res://Assets/exhale.mp3" id="3_ggqdw"]
+[ext_resource type="Texture2D" uid="uid://c4d1tgixq0k2x" path="res://Images/old_cig_allume1.png" id="4_8pd2p"]
 [ext_resource type="Shader" uid="uid://dptoydrs4igu" path="res://Assets/pixel.gdshader" id="4_ggqdw"]
-[ext_resource type="Texture2D" uid="uid://bphfpas5risf4" path="res://Images/ado_cig_low.png" id="4_pix50"]
+[ext_resource type="Texture2D" uid="uid://dlonb7y25dllh" path="res://Images/old_cig_allume2.png" id="5_81no1"]
 [ext_resource type="Shader" uid="uid://cexu075d0hqfn" path="res://Scenes/borderburn.gdshader" id="5_ab5g2"]
-[ext_resource type="Texture2D" uid="uid://djty5cfeikh2d" path="res://Images/ado_cig_tire.png" id="5_u3tj2"]
-[ext_resource type="Texture2D" uid="uid://7dy3k0a4ih2v" path="res://Images/ado_cig_idle.png" id="6_8pd2p"]
-[ext_resource type="Texture2D" uid="uid://cilbuwyrw0un4" path="res://Images/ado_cig_tire2.png" id="7_81no1"]
-[ext_resource type="Texture2D" uid="uid://6hswk41cgwx6" path="res://Images/ado_cig_cendre.png" id="8_xpwnf"]
+[ext_resource type="Texture2D" uid="uid://cujqhwdccguxj" path="res://Images/old_cig_allume3.png" id="6_xpwnf"]
+[ext_resource type="Texture2D" uid="uid://dsjl05o8iplxn" path="res://Images/old_cig_allume4.png" id="7_83v3f"]
+[ext_resource type="Texture2D" uid="uid://cs0v428e120ar" path="res://Images/old_cig_allume5.png" id="8_e4d7c"]
+[ext_resource type="Texture2D" uid="uid://d02ll1ixxmidm" path="res://Images/old_cig_tire2.png" id="9_tskfr"]
+[ext_resource type="Texture2D" uid="uid://ctlq0c441mbxa" path="res://Images/old_cig_tire.png" id="10_w45xd"]
 
 [sub_resource type="Animation" id="Animation_58k75"]
 resource_name = "Allumer_Cigarette"
@@ -25,11 +28,15 @@ tracks/0/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
+"stream": ExtResource("2_81no1")
+}, {
+"end_offset": 0.23,
+"start_offset": 1.18,
 "stream": ExtResource("2_hb24h")
 }],
-"times": PackedFloat32Array(0)
+"times": PackedFloat32Array(0.2, 1.4)
 }
-tracks/0/use_blend = true
+tracks/0/use_blend = false
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
@@ -103,42 +110,45 @@ _data = {
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_pix50")
+"texture": ExtResource("4_8pd2p")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_u3tj2")
+"texture": ExtResource("5_81no1")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_8pd2p")
+"texture": ExtResource("6_xpwnf")
+}, {
+"duration": 4.0,
+"texture": ExtResource("7_83v3f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_e4d7c")
+}, {
+"duration": 0.21,
+"texture": ExtResource("9_tskfr")
 }],
 "loop": false,
 "name": &"Allume",
-"speed": 1.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("6_8pd2p")
+"texture": ExtResource("9_tskfr")
 }],
 "loop": true,
 "name": &"Idle",
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
-"texture": ExtResource("5_u3tj2")
+"duration": 4.0,
+"texture": ExtResource("10_w45xd")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_81no1")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_xpwnf")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_8pd2p")
+"texture": ExtResource("9_tskfr")
 }],
 "loop": false,
 "name": &"Tire",
-"speed": 1.0
+"speed": 2.0
 }]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_40dfy"]
@@ -170,9 +180,9 @@ shader_parameter/tip_color = Color(0.91712135, 0.47608995, 0.95693153, 0.4745098
 shader_parameter/poster_color = 11.402000541595
 shader_parameter/fire_alpha = 0.4400000209
 shader_parameter/fire_speed = Vector2(0, -0.1)
-shader_parameter/fire_aperture = 0.7950000377625
-shader_parameter/vignette_radius = 0.2390000113525
-shader_parameter/vignette_falloff = 0.23600001121
+shader_parameter/fire_aperture = 0.1050000049875
+shader_parameter/vignette_radius = 0.2850000135375
+shader_parameter/vignette_falloff = 0.322000015295
 shader_parameter/noise_influence = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ab5g2"]
@@ -212,8 +222,11 @@ scale = Vector2(0.60625, 0.600926)
 sprite_frames = SubResource("SpriteFrames_83v3f")
 animation = &"Tire"
 autoplay = "Idle"
+frame = 1
+frame_progress = 1.0
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
+visible = false
 modulate = Color(1, 1, 1, 0)
 anchors_preset = 5
 anchor_left = 0.5
@@ -244,6 +257,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Transition" parent="." instance=ExtResource("2_ggqdw")]
+visible = false
 offset_right = 1157.0
 offset_bottom = 652.0
 

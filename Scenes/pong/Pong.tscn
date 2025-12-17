@@ -171,8 +171,6 @@ _data = {
 
 [node name="Pong" type="Node2D"]
 
-[node name="Node2D" type="Node2D" parent="."]
-
 [node name="PlayerPaddle" type="CharacterBody2D" parent="."]
 position = Vector2(0, -96)
 motion_mode = 1
@@ -236,17 +234,12 @@ shape = SubResource("RectangleShape2D_5ig22")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
-[node name="Phase1" type="Sprite2D" parent="."]
-z_index = -1
-position = Vector2(576.00006, 324.00003)
-scale = Vector2(0.6, 0.6)
-texture = ExtResource("8_s25mq")
-
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="TextureRect"]
+clip_contents = false
 layout_mode = 0
 offset_left = 536.0
 offset_top = 216.0
@@ -271,5 +264,11 @@ libraries = {
 &"": SubResource("AnimationLibrary_quvn0")
 }
 autoplay = "Entry"
+
+[node name="Phase1" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(576.00006, 324.00003)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("8_s25mq")
 
 [connection signal="animation_finished" from="EntryAnim" to="Ball" method="_on_entry_anim_animation_finished"]
